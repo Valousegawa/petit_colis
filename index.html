@@ -2,15 +2,22 @@
 <html ng-app="petit_colis" ng-app lang="en">
 <head>
     <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
     <link href="css/bootstrap.css" rel="stylesheet">
     <title>Petit Colis</title>
 </head>
 <body>
-<h1>Hello World !</h1>
+<div ng-controller="HomeController">
+    <h1>Hello World !</h1>
+    <p>{{ "views.index.message" | translate }}</p>
+    <select ng-options="language | translate for language in languages" ng-model="language" ng-change="updateLanguage()"></select>
+</div>
 </body>
-<script type="text/javascript" src="js/angular.js"></script>
-<script src="js/angular-route.min.js"></script>
-<script type="text/javascript">
 
-</script>
+<script type="text/javascript" src="js/angular.js"></script>
+<script src="app/app.js"></script>
+<script src="js/angular-route.min.js"></script>
+<script src="js/angular-translate.js"></script>
+<script src="js/angular-translate-loader-static-files.js"></script>
+
 </html>
