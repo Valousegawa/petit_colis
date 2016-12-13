@@ -16,6 +16,7 @@ app.controller('profileController', function ($scope) {
 app.controller('addColisController', function ($scope) {
 });
 
+
 /* CONFIG DECLARATION */
 app.config(function ($translateProvider) {
     $translateProvider.useStaticFilesLoader({
@@ -42,14 +43,47 @@ app.config(function ($routeProvider, $locationProvider) {
 });
 
 /* FACTORY DECLARATION */
-
+app.factory("ressources", ['$http', function($http){
+    var ressourceBase = "ressources/"
+    var obj = {};
+    obj.getUser = function(user){
+        return $http.post(ressourceBase + "login", user).then(function(results){
+            return results;
+        });
+    };
+    obj.inscription = function(users){
+        return $http.post(ressourceBase + "inscription", users).then(function(results){
+            return results;
+        });
+    };
+    return obj;
+}]);
 
 /* FUNCTION DECLARATION */
 function HomeController($window, $translate, $scope) {
     $scope.language = 'fr_FR';
     $scope.languages = ['en_US', 'fr_FR', 'es_ES'];
-
     $scope.updateLanguage = function () {
         $translate.use($scope.language);
+    };
+    $scope.connect = function(){
+        var data = [
+            $scope.genre,
+            $scope.user_prenom,
+            $scope.user_nom,
+            $scope.mail,
+            $scope.mdp,
+            $scope.naissance,
+            $scope.newsletter,
+            $scope.rang
+        ];
+        ressources.inscription(data);
+    };
+    $scope.submit = function(){
+        var donnees = [
+            $scope.email,
+            $scope.passwd,
+        ];
+        ressources.getUser(donnees);
     };
 }
