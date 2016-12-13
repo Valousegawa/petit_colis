@@ -1,6 +1,28 @@
 {
-  "views.index.Home.title": "Welcome",
-  "views.index.message": "This app supports your lanaguage!",
   "en_US": "English",
-  "fr_FR": "French"
+  "fr_FR": "French",
+  "es_ES": "Spanish",
+
+  "title" : "Your packages of a click beat",
+  "title.home" : "",
+  "title.profile" : "",
+  "title.add_colis" : "",
+
+  "navbar.home": "Home",
+  "navbar.profile": "Profile",
+  "navbar.add_colis": "Add a package",
+
+  "title.temoignage" : "They trust us ...",
+  "title.last" : "Last ads",
+  "title.howto" : "How It works ?",
+
+  "profile.message": "You are at the profile page !",
+  "add_colis.message": "You are at the adding a package page !",
+
+  "message.choose" : "Choose a travel",
+  "message.choose.inner" : "Need to send a package ? Look for a traveler who can bring it to your recipient !",
+  "message.book" : "Book the shipment",
+  "message.book.inner" : "Your package is ready to go ! Check modalities with the traveler by messaging him !",
+  "message.wait" : "Wait and relax",
+  "message.wait.inner" : "Your package is on the road ! Relax and wait for the recipient's answer !"
 }

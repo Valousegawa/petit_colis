@@ -2,22 +2,57 @@
 <html ng-app="petit_colis" ng-app lang="en">
 <head>
     <meta charset="utf-8">
+    <base href="/petit_colis/">
     <link rel="icon" type="image/x-icon" href="favicon.ico"/>
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet">
     <title>Petit Colis</title>
 </head>
-<body>
-<div ng-controller="HomeController">
-    <h1>Hello World !</h1>
-    <p>{{ "views.index.message" | translate }}</p>
-    <select ng-options="language | translate for language in languages" ng-model="language" ng-change="updateLanguage()"></select>
+<body ng-controller="HomeController">
+<div class="lang_bar">
+    <select ng-options="language | translate for language in languages" ng-model="language"
+            ng-change="updateLanguage()" style="width: 150px; display: inline-block; margin-right: 10px"
+            class="form-control"></select>
+    <img ng-src="img/{{language}}.png">
+</div>
+<div class="header">
+    <span>
+    <h1 class="main_title"><a href="/petit_colis/"><img src="img/logo.PNG" class="logo"/></a>
+    {{"title" | translate}}
+    </h1>
+    </span>
+</div>
+<br/>
+<br/>
+<nav class="navbar navbar-default" style="width: 40%;">
+    <ul class="nav navbar-nav">
+        <li>
+            <a href="/petit_colis/">{{"navbar.home" | translate}}</a>
+        </li>
+        <li>
+            <a href="/petit_colis/profile">{{"navbar.profile" | translate}}</a>
+        </li>
+        <li>
+            <a href="/petit_colis/ajouter_colis">{{"navbar.add_colis" | translate}}</a>
+        </li>
+    </ul>
+</nav>
+<div ng-view></div>
+<div class="clearfix"></div>
+<br/>
+<br/>
+<div class="footer">
+    <p class="center">&copy; Petit Colis - Sébastion MINES & Valentin HUYENH</p>
+    <p class="center">INSTA 2016</p>
 </div>
 </body>
-
 <script type="text/javascript" src="js/angular.js"></script>
 <script src="app/app.js"></script>
+<script src="js/jquery-3.1.1.js"></script>
+<script src="js/index.js"></script>
 <script src="js/angular-route.min.js"></script>
 <script src="js/angular-translate.js"></script>
 <script src="js/angular-translate-loader-static-files.js"></script>
-
+<script src="js/jquery.mCustomScrollbar.js"></script>
 </html>
