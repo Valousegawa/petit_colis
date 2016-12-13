@@ -1,2 +1,2 @@
 # petit_colis
-An INSTA project by Sebactien MINES and Valentin HUYENH
+An INSTA project by Sebastien MINES and Valentin HUYENH
