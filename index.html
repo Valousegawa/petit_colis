@@ -6,8 +6,73 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <title>Petit Colis</title>
 </head>
-<body>
-<div ng-controller="HomeController">
+<body ng-controller="HomeController">
+	<nav class="navbar">
+		<div class="pull-right">
+			<button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myConnexion">Connexion</button>
+			<button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myInscription">Inscription</button>
+		</div>
+	</nav>
+	<!-- Modal -->
+	<div id="myConnexion" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Connexion</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form ng-submit="submit()">
+  				<input type="text" ng-model="email" name="email" placeholder="E-mail" value=""><br><br>
+  				<input type="password" ng-model="passwd" name="passwd" placeholder="Mot de passe" value=""><br><br>
+  				<input type="submit" name="connexion" value="Connexion">
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+	<!-- Modal -->
+	<div id="myInscription" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Inscription</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form ng-submit="connect()">
+	        	<input type="radio" ng-model="rang" name="rang" value="e"> Entreprise
+  				<input type="radio" ng-model="rang"name="rang" value="p"> Particulier<br><br>
+	        	<input type="radio" ng-model="genre" name="genre" value="homme"> Homme
+  				<input type="radio" ng-model="genre"name="genre" value="femme"> Femme<br><br>
+  				<input type="text" ng-model="user_prenom" name="user_prenom" placeholder="Prénom" value="">
+  				<input type="text" ng-model="user_nom"name="user_nom" placeholder="Nom" value=""><br><br>
+  				<input type="text" ng-model="mail" name="mail" placeholder="E-mail" value=""><br><br>
+  				<input type="password" ng-model="mdp" name="mdp" placeholder="Mot de passe (8 caractères minimum)" value=""><br><br>
+  				<input type="password" name="mdp_verify" placeholder="Comfirmer le mot de passe" value=""><br><br>
+  				<input type="number" ng-model="naissance" name="naissance" placeholder= "Année de naissance" value=""><br><br>
+  				<input type="checkbox" ng-model="newsletter" name="newsletter"> Je veux recevoir des bons plans, des infos sur les nouveautés<br><br>
+  				<input type="submit" name="send" value="Valider">
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+
+<div>
     <h1>Hello World !</h1>
     <p>{{ "views.index.message" | translate }}</p>
     <select ng-options="language | translate for language in languages" ng-model="language" ng-change="updateLanguage()"></select>
@@ -19,5 +84,7 @@
 <script src="js/angular-route.min.js"></script>
 <script src="js/angular-translate.js"></script>
 <script src="js/angular-translate-loader-static-files.js"></script>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </html>
