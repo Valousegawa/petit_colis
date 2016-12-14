@@ -42,10 +42,13 @@
 			$user = json_decode(file_get_contents("php://input"),true);
 			$db = $this->dbConnect();
 
-			$query = $db->prepare("SELECT user_nom, user_prenom FROM users WHERE mail = :mail AND mdp = :mdp");
+			$query = $db->prepare("SELECT * FROM users WHERE mail = :mail AND mdp = :mdp");
 			$query->bindValue(':mail', $user[0]);
 			$query->bindValue(':mdp', $user[1]);
 			$query->execute();
+
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+            $this->json($result);
 		}
 
 

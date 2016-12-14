@@ -4,8 +4,10 @@ var app = angular.module('petit_colis', ['pascalprecht.translate', 'ngRoute']);
 /* CONTROLLER DECLARATION */
 app.controller('HomeController', HomeController);
 app.controller('mainController', mainController);
-
-app.controller('profileController', function ($scope) {
+app.controller('profileController', function ($scope, $rootScope) {
+    if($rootScope.connectedUser != null){
+        $scope.user = $rootScope.connectedUser;
+    }
 });
 app.controller('addColisController', function ($scope) {
 });
@@ -65,6 +67,7 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
 /* FUNCTION DECLARATION */
 function HomeController($window, $translate, $scope, $rootScope, ressources, $location) {
     $rootScope.isConnected = false;
+    $rootScope.connectedUser = {};
     $scope.connected = false;
 
     $scope.$on("loginState", function () {
@@ -81,6 +84,7 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
     $scope.disconnect = function () {
         $rootScope.isConnected = false;
         $rootScope.$broadcast("loginState");
+        $location.path("/");
     };
 
 
@@ -103,6 +107,7 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
         ressources.inscription(data).then(function(){
             $(function () {
                 $("#myInscription").modal('toggle');
+                $("#alert_sub_success").show();
             });
         });
     };
@@ -111,12 +116,13 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
             $scope.email,
             $scope.passwd,
         ];
-        ressources.getUser(donnees).then(function () {
+        ressources.getUser(donnees).then(function (data) {
             $rootScope.isConnected = true;
             $rootScope.$broadcast("loginState");
             $(function () {
                 $("#myConnexion").modal('toggle');
             });
+            $rootScope.connectedUser = data.data;
         });
     };
     $scope.comment = function () {
@@ -131,7 +137,6 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
 
 function mainController($scope, ressources){
     ressources.showComment().then(function(data){
-        console.log(data.data);
         $scope.temoignages = data.data;
     });
 }

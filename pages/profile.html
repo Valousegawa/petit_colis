@@ -1,6 +1,19 @@
 <div>
-    <h1>{{"title.profile" | translate }}</h1>
-    <p>{{ "profile.message" | translate }}</p>
+    <!--<div class="circle"></div>-->
+    <div class="profil">
+        <h1 class="yellowtail">{{"profile.title" | translate}}</h1>
+        <hr class="major_hr"/>
+        <h3 class="yellowtail">{{user.user_nom}} {{user.user_prenom}}</h3>
+        <hr/>
 
-    <div class="circle"></div>
+        <label>{{"profile.date_inscription" | translate}} : </label>
+        <p>{{user.date_inscription | date : 'd/M/yyyy'}}</p><br/>
+
+        <label>Mail : </label>
+        <p>{{user.mail}}</p><br/>
+
+        <label>{{"profile.newsletter" | translate}} : </label>
+        <p ng-if="user.newsletter == 1">{{"profile.oui" | translate}}</p><br/>
+        <p ng-if="user.newsletter == 0">{{"profile.non" | translate}}</p><br/>
+    </div>
 </div>

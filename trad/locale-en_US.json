@@ -8,10 +8,10 @@
   "title.profile" : "",
   "title.add_colis" : "",
 
-  "button.connect" : "Connection",
+  "button.connect" : "Sign In",
   "button.join" : "Join the community",
   "button.profile": "Profile",
-  "button.deco": "Deconnection",
+  "button.deco": "Sign out",
 
   "title.temoignage" : "They trust us ...",
   "title.last" : "Last ads",
@@ -41,5 +41,14 @@
   "form.inscription.nom" : "Last Name",
   "form.inscription.annee" : "Birthyear",
   "form.inscription.texte" : "I want to subscribe to the newsletter to receive tips and informations.",
-  "form.inscription.valider" : "Confirm"
+  "form.inscription.valider" : "Confirm",
+
+  "profile.title" : "Your profile",
+  "profile.date_inscription" : "Subscribe date",
+  "profile.newsletter" : "Newsletter",
+  "profile.oui" : "You subscribe at the newsletter.",
+  "profile.non" : "You didn't subscribe at the newsletter.",
+
+  "alert.success" : "Registering signed in !",
+  "alert.success.message" : "You are now registered. Please connect with your mail adress and password."
 }
