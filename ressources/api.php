@@ -42,10 +42,13 @@
 			$user = json_decode(file_get_contents("php://input"),true);
 			$db = $this->dbConnect();
 
-			$query = $db->prepare("SELECT user_nom, user_prenom FROM users WHERE mail = :mail AND mdp = :mdp");
+			$query = $db->prepare("SELECT * FROM users WHERE mail = :mail AND mdp = :mdp");
 			$query->bindValue(':mail', $user[0]);
 			$query->bindValue(':mdp', $user[1]);
 			$query->execute();
+
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+            $this->json($result);
 		}
 
 
@@ -104,6 +107,20 @@
 				$result[] = $r;
 			}
 			$this->json($result);
+		}
+
+		private function addComment(){
+			if($this->get_request_method() !="POST"){
+				$this->response('', 406);
+			}
+			$comment = json_decode(file_get_contents("php://input"),true);
+			$db = $this->dbConnect();
+
+			$query = $db->prepare("INSERT INTO temoignage(id_user, note, commentaire) VALUES(:user, :note, :commentaire)");
+			$query->bindValue(':user', $comment[0]);
+			$query->bindValue(':note', $comment[1]);
+			$query->bindValue(':commentaire', $comment[2]);
+			$query->execute();
 		}
 
 

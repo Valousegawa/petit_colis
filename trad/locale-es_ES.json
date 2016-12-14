@@ -41,5 +41,14 @@
   "form.inscription.nom" : "Apellido",
   "form.inscription.annee" : "Año de nacimiento",
   "form.inscription.texte" : "Decseo suscribirme a la newsletter para recibir consejos e información",
-  "form.inscription.valider" : "Confirmar"
+  "form.inscription.valider" : "Confirmar",
+
+  "profile.title" : "Su perfil",
+  "profile.date_inscription" : "Fecha de Ingreso",
+  "profile.newsletter" : "Hoja informativa",
+  "profile.oui" : "Usted está suscrito a la newsletter.",
+  "profile.non" : "Usted no está suscrito a la newsletter.",
+
+  "alert.success" : "Registro con éxito !",
+  "alert.success.message" : "Ya está registrado. Inicia sesión con tu dirección de correo electrónico y contraseña."
 }

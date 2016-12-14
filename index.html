@@ -40,6 +40,11 @@
         </button>
     </div>
 </nav>
+
+<div class="alert alert-success alert-dismissible hide" id="alert_sub_success">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>{{"alert.success" | translate}}</strong> {{"alert.success.message" | translate}}
+</div>
 <!--<nav class="navbar navbar-default" style="width: 40%;">-->
     <!--<ul class="nav navbar-nav">-->
         <!--<li>-->
@@ -54,7 +59,11 @@
     <!--</ul>-->
 <!--</nav>-->
 <div ng-view></div>
+<div>
+    <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#addComment">Ajouter un commentaire </button>
+</div>
 <div class="clearfix"></div>
+
 <br/>
 <br/>
 <div class="footer">
@@ -113,6 +122,31 @@
                            value=""><br><br>
                     <input type="checkbox" ng-model="newsletter" name="newsletter"> {{'form.inscription.texte' | translate}}<br><br>
                     <input type="submit" name="send" value="{{'form.inscription.valider' | translate}}">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{"form.fermer" | translate}}</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Modal Comment -->
+<div id="addComment" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Ajouter un commentaire</h4>
+            </div>
+            <div class="modal-body">
+                <form ng-submit="comment()" id="commentform">
+                    <input type="number" ng-model="note" name="note" placeholder="Note de 1 à 5" value=""><br><br>
+                    <textarea rows="4" cols="50" ng-model="textarea" name="comment" form="commentform" placeholder="Ajouter un commentaire"></textarea>
+                    <br><br>
+                    <input type="submit" name="commentaire" value="Valider">
                 </form>
             </div>
             <div class="modal-footer">

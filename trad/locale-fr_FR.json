@@ -41,6 +41,14 @@
   "form.inscription.nom" : "Nom",
   "form.inscription.annee" : "Année de naissance",
   "form.inscription.texte" : "Je souhaite m'inscrire à la newletter pour recevoir des bons plans et des informations.",
-  "form.inscription.valider" : "Valider"
+  "form.inscription.valider" : "Valider",
 
+  "profile.title" : "Votre profil",
+  "profile.date_inscription" : "Date d'inscription",
+  "profile.newsletter" : "Etat de newsletter",
+  "profile.oui" : "Vous êtes abonné(e) à la newsletter.",
+  "profile.non" : "Vous n'êtes pas abonné(e) à la newsletter.",
+
+  "alert.success" : "Inscription réussie !",
+  "alert.success.message" : "Vous êtes désormais inscrit. Veuillez vous connecter avec votre adresse mail et votre mot de passe."
 }
