@@ -94,16 +94,31 @@
 				return $is_particulier = 0;
 			}
 		}
+
+		private function showLastComment(){
+			$db = $this->dbConnect();
+			$query = $db->prepare("SELECT user_nom, user_prenom, note, commentaire FROM users, temoignage WHERE id_user = idUsers ORDER BY id_user DESC LIMIT 5");
+			$query->execute();
+			$result = array(); 
+			while ($r = $query->fetch(PDO::FETCH_ASSOC)){
+				$result[] = $r;
+			}
+			$this->json($result);
+		}
+
+
+
+
+
 		/*
 		 *	Encode array into JSON
 		*/
 		private function json($data){
 			if(is_array($data)){
-				return json_encode($data);
+				echo json_encode($data);
 			}
 		}
 	}
-	
 	// Initiiate Library
 	
 	$api = new API;

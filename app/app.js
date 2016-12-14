@@ -3,8 +3,8 @@ var app = angular.module('petit_colis', ['pascalprecht.translate', 'ngRoute']);
 
 /* CONTROLLER DECLARATION */
 app.controller('HomeController', HomeController);
-app.controller('mainController', function ($scope, $rootScope) {
-});
+app.controller('mainController', mainController);
+
 app.controller('profileController', function ($scope) {
 });
 app.controller('addColisController', function ($scope) {
@@ -40,6 +40,7 @@ app.config(function ($routeProvider, $locationProvider) {
 app.factory("ressources", ['$http', function ($http, $rootScope) {
     var ressourceBase = "ressources/"
     var obj = {};
+
     obj.getUser = function (user, $rootScope) {
         return $http.post(ressourceBase + "login", user).then(function (results) {
             return results;
@@ -50,6 +51,9 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
             return results;
         });
     };
+    obj.showComment = function(){
+        return $http.get(ressourceBase + "showLastComment");
+    }
     return obj;
 }]);
 
@@ -110,4 +114,11 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
             });
         });
     };
+}
+
+function mainController($scope, ressources){
+    ressources.showComment().then(function(data){
+        console.log(data.data);
+        $scope.temoignages = data.data;
+    });
 }
