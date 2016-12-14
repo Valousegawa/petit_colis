@@ -8,9 +8,10 @@
   "title.profile" : "",
   "title.add_colis" : "",
 
-  "navbar.home": "Bienvenida",
-  "navbar.profile": "Perfil",
-  "navbar.add_colis": "Agregar un paquete",
+  "button.connect" : "Conectarse",
+  "button.join" : "Parte de la comunidad",
+  "button.profile": "Perfil",
+  "button.deco": "Desconexión",
 
   "title.temoignage" : "Ellos confiaron en nosotros ...",
   "title.last" : "De nuevos anuncios",
@@ -24,5 +25,21 @@
   "message.book" : "Libro de viajes",
   "message.book.inner" : "Su paquete está listo para ir! Póngase en contacto con el viajero de arreglar esto!",
   "message.wait" : "Espere y relajarse",
-  "message.wait.inner" : "El partido paquete, relajarse y esperar a la respuesta del receptor!"
+  "message.wait.inner" : "El partido paquete, relajarse y esperar a la respuesta del receptor!",
+
+  "form.connexion" : "Iniciar la sesión",
+  "form.connexion.mdp" : "Contraseña",
+  "form.connexion.confirm_mdp" : "Confirmar la contraseña",
+  "form.fermer" : "Cerca",
+
+  "form.inscription" : "Registro",
+  "form.inscription.entreprise" : "Negocios",
+  "form.inscription.particulier" : "Particular",
+  "form.inscription.homme" : "Hombre",
+  "form.inscription.femme" : "Mujer",
+  "form.inscription.prenom" : "Nombre",
+  "form.inscription.nom" : "Apellido",
+  "form.inscription.annee" : "Año de nacimiento",
+  "form.inscription.texte" : "Decseo suscribirme a la newsletter para recibir consejos e información",
+  "form.inscription.valider" : "Confirmar"
 }

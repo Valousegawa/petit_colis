@@ -8,9 +8,10 @@
   "title.profile" : "",
   "title.add_colis" : "",
 
-  "navbar.home": "Home",
-  "navbar.profile": "Profile",
-  "navbar.add_colis": "Add a package",
+  "button.connect" : "Connection",
+  "button.join" : "Join the community",
+  "button.profile": "Profile",
+  "button.deco": "Deconnection",
 
   "title.temoignage" : "They trust us ...",
   "title.last" : "Last ads",
@@ -24,5 +25,21 @@
   "message.book" : "Book the shipment",
   "message.book.inner" : "Your package is ready to go ! Check modalities with the traveler by messaging him !",
   "message.wait" : "Wait and relax",
-  "message.wait.inner" : "Your package is on the road ! Relax and wait for the recipient's answer !"
+  "message.wait.inner" : "Your package is on the road ! Relax and wait for the recipient's answer !",
+
+  "form.connexion" : "Connection",
+  "form.connexion.mdp" : "Password",
+  "form.connexion.confirm_mdp" : "Confirm password",
+  "form.fermer" : "Close",
+
+  "form.inscription" : "Join",
+  "form.inscription.entreprise" : "Company",
+  "form.inscription.particulier" : "Individual",
+  "form.inscription.homme" : "Man",
+  "form.inscription.femme" : "Woman",
+  "form.inscription.prenom" : "Name",
+  "form.inscription.nom" : "Last Name",
+  "form.inscription.annee" : "Birthyear",
+  "form.inscription.texte" : "I want to subscribe to the newsletter to receive tips and informations.",
+  "form.inscription.valider" : "Confirm"
 }

@@ -8,9 +8,10 @@
   "title.profile" : "",
   "title.add_colis" : "",
 
-  "navbar.home": "Accueil",
-  "navbar.profile": "Profil",
-  "navbar.add_colis": "Ajouter un colis",
+  "button.connect" : "Se connecter",
+  "button.join" : "Rejoindre la communauté",
+  "button.profile": "Profil",
+  "button.deco": "Deconnexion",
 
   "title.temoignage" : "Ils nous font confiance ...",
   "title.last" : "Les dernières annonces",
@@ -24,5 +25,22 @@
   "message.book" : "Réservez la course",
   "message.book.inner" : "Votre colis est prêt à partir ! Contactez le voyageur pour convenir des modalités !",
   "message.wait" : "Attendez et relaxez vous",
-  "message.wait.inner" : "Le colis est parti, relaxez vous et attendez la réponse du destinataire !"
+  "message.wait.inner" : "Le colis est parti, relaxez vous et attendez la réponse du destinataire !",
+
+  "form.connexion" : "Connexion",
+  "form.connexion.mdp" : "Mot de passe",
+  "form.connexion.confirm_mdp" : "Confirmer le mot de passe",
+  "form.fermer" : "Fermer",
+
+  "form.inscription" : "Inscription",
+  "form.inscription.entreprise" : "Entreprise",
+  "form.inscription.particulier" : "Particulier",
+  "form.inscription.homme" : "Homme",
+  "form.inscription.femme" : "Femme",
+  "form.inscription.prenom" : "Prénom",
+  "form.inscription.nom" : "Nom",
+  "form.inscription.annee" : "Année de naissance",
+  "form.inscription.texte" : "Je souhaite m'inscrire à la newletter pour recevoir des bons plans et des informations.",
+  "form.inscription.valider" : "Valider"
+
 }
