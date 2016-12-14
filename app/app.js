@@ -1,5 +1,5 @@
 /* MODULE DECLARATION */
-var app = angular.module('petit_colis', ['pascalprecht.translate', 'ngRoute']);
+var app = angular.module('petit_colis', ['pascalprecht.translate', 'ngRoute', 'ngCookies']);
 
 /* CONTROLLER DECLARATION */
 app.controller('HomeController', HomeController);
@@ -64,10 +64,19 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
 }]);
 
 /* FUNCTION DECLARATION */
-function HomeController($window, $translate, $scope, $rootScope, ressources, $location) {
+function HomeController($window, $translate, $scope, $rootScope, ressources, $location, $cookies) {
     $rootScope.isConnected = false;
     $rootScope.connectedUser = {};
     $scope.connected = false;
+
+    if($cookies.getObject('petit_colis.credentials')){
+        var donnees = $cookies.getObject('petit_colis.credentials');
+        ressources.getUser(donnees).then(function (data) {
+            $rootScope.isConnected = true;
+            $rootScope.$broadcast("loginState");
+            $rootScope.connectedUser = data.data;
+        });
+    }
 
     $scope.$on("loginState", function () {
         if ($rootScope.isConnected) {
@@ -83,6 +92,7 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
     $scope.disconnect = function () {
         $rootScope.isConnected = false;
         $rootScope.$broadcast("loginState");
+        $cookies.remove('petit_colis.credentials');
         $location.path("/");
     };
 
@@ -122,6 +132,10 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
                 $("#myConnexion").modal('toggle');
             });
             $rootScope.connectedUser = data.data;
+
+            var expireDate = new Date();
+            expireDate.setDate(expireDate.getDate() + 1);
+            $cookies.putObject('petit_colis.credentials', donnees, {'expires': expireDate});
         });
     };
     $scope.comment = function () {
