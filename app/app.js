@@ -3,14 +3,7 @@ var app = angular.module('petit_colis', ['pascalprecht.translate', 'ngRoute']);
 
 /* CONTROLLER DECLARATION */
 app.controller('HomeController', HomeController);
-app.controller('mainController', function ($scope) {
-    $scope.temoignages = [
-        {nom : "RAMIREZ", prenom : "Sanchez", note : "5", message : "Super service ! Je recommande à tout ceux qui venlent envoyer pour pas cher et rapidement."},
-        {nom : "ANDREAS", prenom : "Louuis", note : "4", message : "Excellent rapport qualité prix !"},
-        {nom : "DURIFF", prenom : "Sylvain", note : "5", message : "Pour envoyer des vaisseaux de la Vierge Marie, y'a pas mieux !"},
-        {nom : "PACIFIC", prenom : "Sound3003", note : "5", message : "Han C'est de la bombe cet outil, je recommande au nom du silence de la MAsterCard."},
-    ]
-});
+app.controller('mainController', mainController);
 app.controller('profileController', function ($scope) {
 });
 app.controller('addColisController', function ($scope) {
@@ -48,7 +41,6 @@ app.factory("ressources", ['$http', function($http, $rootScope){
     var obj = {};
     obj.getUser = function(user){
         return $http.post(ressourceBase + "login", user).then(function(results){
-            $rootScope.$broadcast("doorBell", true);
             return results;
         });
     };
@@ -57,6 +49,9 @@ app.factory("ressources", ['$http', function($http, $rootScope){
             return results;
         });
     };
+    obj.showComment = function(){
+        return $http.get(ressourceBase + "showLastComment");
+    }
     return obj;
 }]);
 
@@ -89,4 +84,11 @@ function HomeController($window, $translate, $scope, $rootScope, ressources) {
         ];
         ressources.getUser(donnees);
     };
+}
+
+function mainController($scope, ressources){
+    ressources.showComment().then(function(data){
+        console.log(data.data);
+        $scope.temoignages = data.data;
+    });
 }
