@@ -10,7 +10,7 @@
         <h3 class="yellowtail">{{"title.temoignage" | translate}}</h3>
         <hr class="major_hr">
         <div ng-repeat="temoignage in temoignages track by $index">
-            <h4 class="yellowtail">{{temoignage.user_nom}} {{temoignage.user_prenom}}</h4>
+            <h4 class="yellowtail">{{temoignage.user_prenom}} {{temoignage.user_nom}}</h4>
             <hr>
             <p>{{temoignage.commentaire}}</p>
             <br>

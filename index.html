@@ -46,17 +46,17 @@
     <strong>{{"alert.success" | translate}}</strong> {{"alert.success.message" | translate}}
 </div>
 <!--<nav class="navbar navbar-default" style="width: 40%;">-->
-    <!--<ul class="nav navbar-nav">-->
-        <!--<li>-->
-            <!--<a href="/petit_colis/">{{"navbar.home" | translate}}</a>-->
-        <!--</li>-->
-        <!--<li>-->
-            <!--<a href="/petit_colis/profile">{{"navbar.profile" | translate}}</a>-->
-        <!--</li>-->
-        <!--<li>-->
-            <!--<a href="/petit_colis/ajouter_colis">{{"navbar.add_colis" | translate}}</a>-->
-        <!--</li>-->
-    <!--</ul>-->
+<!--<ul class="nav navbar-nav">-->
+<!--<li>-->
+<!--<a href="/petit_colis/">{{"navbar.home" | translate}}</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href="/petit_colis/profile">{{"navbar.profile" | translate}}</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href="/petit_colis/ajouter_colis">{{"navbar.add_colis" | translate}}</a>-->
+<!--</li>-->
+<!--</ul>-->
 <!--</nav>-->
 <div ng-view></div>
 <div class="clearfix"></div>
@@ -65,7 +65,7 @@
 <br/>
 <div class="footer">
     <p class="center">&copy; Petit Colis - Sébastien MINES & Valentin HUYENH</p>
-    <p class="center">INSTA - 2016/2017 - Tous droits réservés</p>
+    <p class="center">INSTA - 2016/2017 - {{"message.rights" | translate}}</p>
 </div>
 
 
@@ -82,12 +82,14 @@
             <div class="modal-body">
                 <form ng-submit="submit()">
                     <input type="text" ng-model="email" name="email" placeholder="E-mail" value=""><br><br>
-                    <input type="password" ng-model="passwd" name="passwd" placeholder="{{'form.connexion.mdp' | translate}}" value=""><br><br>
+                    <input type="password" ng-model="passwd" name="passwd"
+                           placeholder="{{'form.connexion.mdp' | translate}}" value=""><br><br>
                     <input type="submit" name="connexion" value="{{'form.connexion' | translate}}">
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{"form.fermer" | translate}}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{"form.fermer" | translate}}
+                </button>
             </div>
         </div>
 
@@ -105,24 +107,34 @@
             </div>
             <div class="modal-body">
                 <form ng-submit="connect()">
-                    <input type="radio" ng-model="rang" name="rang" value="e"> {{"form.inscription.entreprise" | translate}}
-                    <input type="radio" ng-model="rang" name="rang" value="p"> {{"form.inscription.particulier" | translate}}<br><br>
-                    <input type="radio" ng-model="genre" name="genre" value="homme"> {{"form.inscription.homme" | translate}}
-                    <input type="radio" ng-model="genre" name="genre" value="femme"> {{"form.inscription.femme" | translate}}<br><br>
-                    <input type="text" ng-model="user_prenom" name="user_prenom" placeholder="{{'form.inscription.prenom' | translate}}" value="">
-                    <input type="text" ng-model="user_nom" name="user_nom" placeholder="{{'form.inscription.nom' | translate}}" value=""><br><br>
+                    <input type="radio" ng-model="rang" name="rang" value="e"> {{"form.inscription.entreprise" |
+                    translate}}
+                    <input type="radio" ng-model="rang" name="rang" value="p"> {{"form.inscription.particulier" |
+                    translate}}<br><br>
+                    <input type="radio" ng-model="genre" name="genre" value="homme"> {{"form.inscription.homme" |
+                    translate}}
+                    <input type="radio" ng-model="genre" name="genre" value="femme"> {{"form.inscription.femme" |
+                    translate}}<br><br>
+                    <input type="text" ng-model="user_prenom" name="user_prenom"
+                           placeholder="{{'form.inscription.prenom' | translate}}" value="">
+                    <input type="text" ng-model="user_nom" name="user_nom"
+                           placeholder="{{'form.inscription.nom' | translate}}" value=""><br><br>
                     <input type="text" ng-model="mail" name="mail" placeholder="E-mail" value=""><br><br>
                     <input type="password" ng-model="mdp" name="mdp" placeholder="{{'form.connexion.mdp' | translate}}"
                            value=""><br><br>
-                    <input type="password" name="mdp_verify" placeholder="{{'form.connexion.confirm_mdp' | translate}}" value=""><br><br>
-                    <input type="number" ng-model="naissance" name="naissance" placeholder="{{'form.inscription.annee' | translate}}"
+                    <input type="password" name="mdp_verify" placeholder="{{'form.connexion.confirm_mdp' | translate}}"
                            value=""><br><br>
-                    <input type="checkbox" ng-model="newsletter" name="newsletter"> {{'form.inscription.texte' | translate}}<br><br>
+                    <input type="number" ng-model="naissance" name="naissance"
+                           placeholder="{{'form.inscription.annee' | translate}}"
+                           value=""><br><br>
+                    <input type="checkbox" ng-model="newsletter" name="newsletter"> {{'form.inscription.texte' |
+                    translate}}<br><br>
                     <input type="submit" name="send" value="{{'form.inscription.valider' | translate}}">
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{"form.fermer" | translate}}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{"form.fermer" | translate}}
+                </button>
             </div>
         </div>
 
@@ -136,18 +148,21 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Ajouter un commentaire</h4>
+                <h4 class="modal-title">{{"button.add_comment" | translate}}</h4>
             </div>
             <div class="modal-body">
                 <form ng-submit="comment()" id="commentform">
-                    <input type="number" ng-model="note" name="note" placeholder="Note de 1 à 5" value=""><br><br>
-                    <textarea rows="4" cols="50" ng-model="textarea" name="comment" form="commentform" placeholder="Ajouter un commentaire"></textarea>
+                    <input type="number" ng-model="note" name="note" placeholder="{{'form.comment.note' | translate}}"
+                           value=""><br><br>
+                    <textarea rows="4" cols="50" ng-model="textarea" name="comment" form="commentform"
+                              placeholder="{{'button.add_comment' | translate}}"></textarea>
                     <br><br>
                     <input type="submit" name="commentaire" value="Valider">
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{"form.fermer" | translate}}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{"form.fermer" | translate}}
+                </button>
             </div>
         </div>
 

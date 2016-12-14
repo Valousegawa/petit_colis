@@ -53,5 +53,8 @@
   "alert.success.message" : "Vous êtes désormais inscrit. Veuillez vous connecter avec votre adresse mail et votre mot de passe.",
 
   "button.add_comment" : "Ajouter un commentaire",
-  "button.add_annonce" : "Ajouter une annonce"
+  "button.add_annonce" : "Ajouter une annonce",
+  "form.comment.note" : "Evaluez sur 5",
+
+  "message.rights" : "Tous droits réservés"
 }

@@ -53,5 +53,8 @@
   "alert.success.message" : "You are now registered. Please connect with your mail adress and password.",
 
   "button.add_comment" : "Add a comment",
-  "button.add_annonce" : "Add an ad"
+  "button.add_annonce" : "Add an ad",
+  "form.comment.note" : "Rate on 5",
+
+  "message.rights" : "All rights reserved"
 }

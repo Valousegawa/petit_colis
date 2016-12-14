@@ -53,5 +53,8 @@
   "alert.success.message" : "Ya está registrado. Inicia sesión con tu dirección de correo electrónico y contraseña.",
 
   "button.add_comment" : "Añadir comentario",
-  "button.add_annonce" : "Un anuncio"
+  "button.add_annonce" : "Un anuncio",
+  "form.comment.note" : "velocidad de 5",
+
+  "message.rights" : "Todos los derechos reservados"
 }
