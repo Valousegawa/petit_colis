@@ -50,5 +50,8 @@
   "profile.non" : "Usted no está suscrito a la newsletter.",
 
   "alert.success" : "Registro con éxito !",
-  "alert.success.message" : "Ya está registrado. Inicia sesión con tu dirección de correo electrónico y contraseña."
+  "alert.success.message" : "Ya está registrado. Inicia sesión con tu dirección de correo electrónico y contraseña.",
+
+  "button.add_comment" : "Añadir comentario",
+  "button.add_annonce" : "Un anuncio"
 }

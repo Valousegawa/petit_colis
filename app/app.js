@@ -5,13 +5,12 @@ var app = angular.module('petit_colis', ['pascalprecht.translate', 'ngRoute']);
 app.controller('HomeController', HomeController);
 app.controller('mainController', mainController);
 app.controller('profileController', function ($scope, $rootScope) {
-    if($rootScope.connectedUser != null){
+    if ($rootScope.connectedUser != null) {
         $scope.user = $rootScope.connectedUser;
     }
 });
 app.controller('addColisController', function ($scope) {
 });
-
 
 /* CONFIG DECLARATION */
 app.config(function ($translateProvider) {
@@ -53,11 +52,11 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
             return results;
         });
     };
-    obj.showComment = function(){
+    obj.showComment = function () {
         return $http.get(ressourceBase + "showLastComment");
     }
-    obj.addComment = function(commentaire){
-        return $http.post(ressourceBase + "addComment", commentaire).then(function(results){
+    obj.addComment = function (commentaire) {
+        return $http.post(ressourceBase + "addComment", commentaire).then(function (results) {
             return results;
         });
     };
@@ -104,7 +103,7 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
             $scope.newsletter,
             $scope.rang
         ];
-        ressources.inscription(data).then(function(){
+        ressources.inscription(data).then(function () {
             $(function () {
                 $("#myInscription").modal('toggle');
                 $("#alert_sub_success").show();
@@ -127,16 +126,21 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
     };
     $scope.comment = function () {
         var com = [
-            $scope.id_user = 1,
+            $scope.id_user = $rootScope.connectedUser.idUsers,
             $scope.note,
             $scope.textarea
         ];
-        ressources.addComment(com);
+        ressources.addComment(com).then(function () {
+            ressources.showComment().then(function (data) {
+                $scope.temoignages = data.data;
+                $("#addComment").modal('toggle');
+            });
+        });
     }
 }
 
-function mainController($scope, ressources){
-    ressources.showComment().then(function(data){
+function mainController($scope, ressources) {
+    ressources.showComment().then(function (data) {
         $scope.temoignages = data.data;
     });
 }

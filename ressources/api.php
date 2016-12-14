@@ -21,7 +21,7 @@
 		}
 		
 		/*
-		 * Dynmically call the method based on the query string
+		 * Dynamically call the method based on the query string
 		 */
 		public function processApi(){
 			$func = strtolower(trim(str_replace("/","",$_REQUEST['x'])));

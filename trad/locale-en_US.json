@@ -50,5 +50,8 @@
   "profile.non" : "You didn't subscribe at the newsletter.",
 
   "alert.success" : "Registering signed in !",
-  "alert.success.message" : "You are now registered. Please connect with your mail adress and password."
+  "alert.success.message" : "You are now registered. Please connect with your mail adress and password.",
+
+  "button.add_comment" : "Add a comment",
+  "button.add_annonce" : "Add an ad"
 }

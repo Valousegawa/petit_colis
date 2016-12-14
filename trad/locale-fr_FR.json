@@ -50,5 +50,8 @@
   "profile.non" : "Vous n'êtes pas abonné(e) à la newsletter.",
 
   "alert.success" : "Inscription réussie !",
-  "alert.success.message" : "Vous êtes désormais inscrit. Veuillez vous connecter avec votre adresse mail et votre mot de passe."
+  "alert.success.message" : "Vous êtes désormais inscrit. Veuillez vous connecter avec votre adresse mail et votre mot de passe.",
+
+  "button.add_comment" : "Ajouter un commentaire",
+  "button.add_annonce" : "Ajouter une annonce"
 }
