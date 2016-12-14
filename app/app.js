@@ -3,13 +3,7 @@ var app = angular.module('petit_colis', ['pascalprecht.translate', 'ngRoute']);
 
 /* CONTROLLER DECLARATION */
 app.controller('HomeController', HomeController);
-app.controller('mainController', function ($scope) {
-    $scope.temoignages = [
-        {nom : "RAMIREZ", prenom : "Sanchez", note : "5", message : "Super service ! Je recommande à tout ceux qui venlent envoyer pour pas cher et rapidement."},
-        {nom : "ANDREAS", prenom : "Louuis", note : "4", message : "Excellent rapport qualité prix !"},
-        {nom : "DURIFF", prenom : "Sylvain", note : "5", message : "Pour envoyer des vaisseaux de la Vierge Marie, y'a pas mieux !"},
-        {nom : "PACIFIC", prenom : "Sound3003", note : "5", message : "Han C'est de la bombe cet outil, je recommande au nom du silence de la MAsterCard."},
-    ]
+app.controller('mainController', function ($scope, $rootScope) {
 });
 app.controller('profileController', function ($scope) {
 });
@@ -43,17 +37,16 @@ app.config(function ($routeProvider, $locationProvider) {
 });
 
 /* FACTORY DECLARATION */
-app.factory("ressources", ['$http', function($http, $rootScope){
+app.factory("ressources", ['$http', function ($http, $rootScope) {
     var ressourceBase = "ressources/"
     var obj = {};
-    obj.getUser = function(user){
-        return $http.post(ressourceBase + "login", user).then(function(results){
-            $rootScope.$broadcast("doorBell", true);
+    obj.getUser = function (user, $rootScope) {
+        return $http.post(ressourceBase + "login", user).then(function (results) {
             return results;
         });
     };
-    obj.inscription = function(users){
-        return $http.post(ressourceBase + "inscription", users).then(function(results){
+    obj.inscription = function (users) {
+        return $http.post(ressourceBase + "inscription", users).then(function (results) {
             return results;
         });
     };
@@ -61,15 +54,33 @@ app.factory("ressources", ['$http', function($http, $rootScope){
 }]);
 
 /* FUNCTION DECLARATION */
-function HomeController($window, $translate, $scope, $rootScope, ressources) {
+function HomeController($window, $translate, $scope, $rootScope, ressources, $location) {
     $rootScope.isConnected = false;
+    $scope.connected = false;
+
+    $scope.$on("loginState", function () {
+        if ($rootScope.isConnected) {
+            $scope.connected = true;
+        } else {
+            $scope.connected = false;
+        }
+    });
+
+    $scope.go = function (path) {
+        $location.path(path);
+    };
+    $scope.disconnect = function () {
+        $rootScope.isConnected = false;
+        $rootScope.$broadcast("loginState");
+    };
+
 
     $scope.language = 'fr_FR';
     $scope.languages = ['en_US', 'fr_FR', 'es_ES'];
     $scope.updateLanguage = function () {
         $translate.use($scope.language);
     };
-    $scope.connect = function(){
+    $scope.connect = function () {
         var data = [
             $scope.genre,
             $scope.user_prenom,
@@ -80,13 +91,23 @@ function HomeController($window, $translate, $scope, $rootScope, ressources) {
             $scope.newsletter,
             $scope.rang
         ];
-        ressources.inscription(data);
+        ressources.inscription(data).then(function(){
+            $(function () {
+                $("#myInscription").modal('toggle');
+            });
+        });
     };
-    $scope.submit = function(){
+    $scope.submit = function () {
         var donnees = [
             $scope.email,
             $scope.passwd,
         ];
-        ressources.getUser(donnees);
+        ressources.getUser(donnees).then(function () {
+            $rootScope.isConnected = true;
+            $rootScope.$broadcast("loginState");
+            $(function () {
+                $("#myConnexion").modal('toggle');
+            });
+        });
     };
 }
