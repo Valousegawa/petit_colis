@@ -1,6 +1,28 @@
 {
-  "views.index.Home.title": "Bienvenue!",
-  "views.index.message": "Cette application prend en charge votre lanaguage!",
   "en_US": "Anglais",
-  "fr_FR": "Français"
+  "fr_FR": "Français",
+  "es_ES": "Espagnol",
+
+  "title" : "Vos colis d'un battement de clic",
+  "title.home" : "",
+  "title.profile" : "",
+  "title.add_colis" : "",
+
+  "navbar.home": "Accueil",
+  "navbar.profile": "Profil",
+  "navbar.add_colis": "Ajouter un colis",
+
+  "title.temoignage" : "Ils nous font confiance ...",
+  "title.last" : "Les dernières annonces",
+  "title.howto" : "Comment ça marche ?",
+
+  "profile.message": "Vous êtes sur la page du profil !",
+  "add_colis.message": "Vous êtes sur la page pour ajouter un colis !",
+
+  "message.choose" : "Choisissez un voyage",
+  "message.choose.inner" : "Un colis à livrer ? Recherchez un voyageur susceptible d'aller où le colis doit se rendre !",
+  "message.book" : "Réservez la course",
+  "message.book.inner" : "Votre colis est prêt à partir ! Contactez le voyageur pour convenir des modalités !",
+  "message.wait" : "Attendez et relaxez vous",
+  "message.wait.inner" : "Le colis est parti, relaxez vous et attendez la réponse du destinataire !"
 }

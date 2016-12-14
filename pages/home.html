@@ -1,0 +1,50 @@
+<div>
+    <h1>{{"title.home" | translate }}</h1>
+
+    <div id="last" class="col-md-4 col-md-offset-2">
+        <h3 class="yellowtail">{{"title.last" | translate}}</h3>
+        <hr>
+    </div>
+
+    <div id="temoignages" class="col-md-3 col-md-offset-1 mCustomScrollbar" data-mcs-theme="dark">
+        <h3 class="yellowtail">{{"title.temoignage" | translate}}</h3>
+        <hr class="major_hr">
+        <div ng-repeat="temoignage in temoignages">
+            <h4 class="yellowtail">{{temoignage.nom}} {{temoignage.prenom}}</h4>
+            <hr>
+            <p>{{temoignage.message}}</p>
+            <br>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div style="height: 50px;"></div>
+    <br>
+
+    <div class="howto col-md-offset-2 col-sm-8" style="height: auto;">
+        <h3 class="yellowtail" style="text-align: center">{{"title.howto" | translate}}</h3>
+        <hr/>
+        <div class="col-md-offset-1 col-md-2">
+            <div class="circle center" style="background: url('img/luggage.png') no-repeat center"></div>
+            <div class="center">
+                <h3 class="yellowtail">{{"message.choose" | translate}}</h3>
+                <p>{{"message.choose.inner" | translate}}</p>
+            </div>
+        </div>
+        <div class="col-md-2 col-md-offset-2">
+            <div class="circle center" style="background: url('img/reserved.png') no-repeat center"></div>
+            <div class="center">
+                <h3 class="yellowtail">{{"message.book" | translate}}</h3>
+                <p>{{"message.book.inner" | translate}}</p>
+            </div>
+        </div>
+
+        <div class="col-md-2 col-md-offset-2">
+            <div class="circle center" style="background: url('img/like.png') no-repeat center"></div>
+            <div class="center">
+                <h3 class="yellowtail">{{"message.wait" | translate}}</h3>
+                <p>{{"message.wait.inner" | translate}}</p>
+            </div>
+        </div>
+    </div>
+</div>
