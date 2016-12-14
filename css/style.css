@@ -20,6 +20,17 @@
     right: 20px;
 }
 
+.select_lang {
+    width: 150px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 50px;
+}
+
+.gatekeeper {
+    margin-right: 20px;
+}
+
 .logo {
     margin-left: 50px;
     padding-right: 50px;

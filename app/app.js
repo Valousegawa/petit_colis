@@ -43,11 +43,12 @@ app.config(function ($routeProvider, $locationProvider) {
 });
 
 /* FACTORY DECLARATION */
-app.factory("ressources", ['$http', function($http){
+app.factory("ressources", ['$http', function($http, $rootScope){
     var ressourceBase = "ressources/"
     var obj = {};
     obj.getUser = function(user){
         return $http.post(ressourceBase + "login", user).then(function(results){
+            $rootScope.$broadcast("doorBell", true);
             return results;
         });
     };
@@ -60,7 +61,9 @@ app.factory("ressources", ['$http', function($http){
 }]);
 
 /* FUNCTION DECLARATION */
-function HomeController($window, $translate, $scope) {
+function HomeController($window, $translate, $scope, $rootScope, ressources) {
+    $rootScope.isConnected = false;
+
     $scope.language = 'fr_FR';
     $scope.languages = ['en_US', 'fr_FR', 'es_ES'];
     $scope.updateLanguage = function () {

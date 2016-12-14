@@ -10,16 +10,9 @@
     <title>Petit Colis</title>
 </head>
 <body ng-controller="HomeController">
-<nav class="navbar">
-    <div class="pull-right">
-        <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myConnexion">Connexion</button>
-        <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myInscription">Inscription</button>
-    </div>
-</nav>
 <div class="lang_bar">
     <select ng-options="language | translate for language in languages" ng-model="language"
-            ng-change="updateLanguage()" style="width: 150px; display: inline-block; margin-right: 10px"
-            class="form-control"></select>
+            ng-change="updateLanguage()" class="form-control select_lang"></select>
     <img ng-src="img/{{language}}.png">
 </div>
 <div class="header">
@@ -29,8 +22,16 @@
     </h1>
     </span>
 </div>
-<br/>
-<br/>
+<nav class="navbar gatekeeper">
+    <div class="pull-right">
+        <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myConnexion">
+            Connectez vous
+        </button>
+        <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myInscription">
+            Rejoignez nous !
+        </button>
+    </div>
+</nav>
 <nav class="navbar navbar-default" style="width: 40%;">
     <ul class="nav navbar-nav">
         <li>
@@ -49,8 +50,8 @@
 <br/>
 <br/>
 <div class="footer">
-    <p class="center">&copy; Petit Colis - Sébastion MINES & Valentin HUYENH</p>
-    <p class="center">INSTA 2016</p>
+    <p class="center">&copy; Petit Colis - Sébastien MINES & Valentin HUYENH</p>
+    <p class="center">INSTA - 2016/2017</p>
 </div>
 
 
@@ -91,16 +92,19 @@
             <div class="modal-body">
                 <form ng-submit="connect()">
                     <input type="radio" ng-model="rang" name="rang" value="e"> Entreprise
-                    <input type="radio" ng-model="rang"name="rang" value="p"> Particulier<br><br>
+                    <input type="radio" ng-model="rang" name="rang" value="p"> Particulier<br><br>
                     <input type="radio" ng-model="genre" name="genre" value="homme"> Homme
-                    <input type="radio" ng-model="genre"name="genre" value="femme"> Femme<br><br>
+                    <input type="radio" ng-model="genre" name="genre" value="femme"> Femme<br><br>
                     <input type="text" ng-model="user_prenom" name="user_prenom" placeholder="Prénom" value="">
-                    <input type="text" ng-model="user_nom"name="user_nom" placeholder="Nom" value=""><br><br>
+                    <input type="text" ng-model="user_nom" name="user_nom" placeholder="Nom" value=""><br><br>
                     <input type="text" ng-model="mail" name="mail" placeholder="E-mail" value=""><br><br>
-                    <input type="password" ng-model="mdp" name="mdp" placeholder="Mot de passe (8 caractères minimum)" value=""><br><br>
+                    <input type="password" ng-model="mdp" name="mdp" placeholder="Mot de passe (8 caractères minimum)"
+                           value=""><br><br>
                     <input type="password" name="mdp_verify" placeholder="Comfirmer le mot de passe" value=""><br><br>
-                    <input type="number" ng-model="naissance" name="naissance" placeholder= "Année de naissance" value=""><br><br>
-                    <input type="checkbox" ng-model="newsletter" name="newsletter"> Je veux recevoir des bons plans, des infos sur les nouveautés<br><br>
+                    <input type="number" ng-model="naissance" name="naissance" placeholder="Année de naissance"
+                           value=""><br><br>
+                    <input type="checkbox" ng-model="newsletter" name="newsletter"> Je veux recevoir des bons plans, des
+                    infos sur les nouveautés<br><br>
                     <input type="submit" name="send" value="Valider">
                 </form>
             </div>
