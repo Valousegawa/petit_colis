@@ -123,6 +123,17 @@
 			$query->execute();
 		}
 
+		private function showLastAdvert(){
+			$db = $this->dbConnect();
+			$query = $db->prepare("SELECT * FROM annonce, users, delai, moyens_transport WHERE id_voyageur = idUsers AND id_delai = idDelai AND id_moyen_transport = idMoyens_transport ORDER BY idAnnonce DESC LIMIT 5");
+			$query->execute();
+			$result = array(); 
+			while ($r = $query->fetch(PDO::FETCH_ASSOC)){
+				$result[] = $r;
+			}
+			$this->json($result);
+		}
+
 
 
 

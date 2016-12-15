@@ -54,11 +54,14 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
     };
     obj.showComment = function () {
         return $http.get(ressourceBase + "showLastComment");
-    }
+    };
     obj.addComment = function (commentaire) {
         return $http.post(ressourceBase + "addComment", commentaire).then(function (results) {
             return results;
         });
+    };
+    obj.showAdvert = function() {
+        return $http.get(ressourceBase + "showLastAdvert");
     };
     return obj;
 }]);
@@ -156,5 +159,8 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
 function mainController($scope, ressources) {
     ressources.showComment().then(function (data) {
         $scope.temoignages = data.data;
+    });
+    ressources.showAdvert().then(function (data){
+        $scope.annonces = data.data;
     });
 }
