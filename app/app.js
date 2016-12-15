@@ -11,6 +11,8 @@ app.controller('profileController', function ($scope, $rootScope) {
 });
 app.controller('addColisController', function ($scope) {
 });
+app.controller('annonceController', function ($scope) {
+});
 
 /* CONFIG DECLARATION */
 app.config(function ($translateProvider) {
@@ -33,6 +35,10 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/ajouter_colis', {
             templateUrl: 'pages/add_colis.html',
             controller: 'addColisController'
+        })
+        .when('/annonce', {
+            templateUrl: 'pages/annonce.html',
+            controller: 'annonceController'
         });
     $locationProvider.html5Mode(true);
 });
