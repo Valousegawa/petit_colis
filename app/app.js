@@ -1,5 +1,5 @@
 /* MODULE DECLARATION */
-var app = angular.module('petit_colis', ['pascalprecht.translate', 'ngRoute', 'ngCookies']);
+var app = angular.module('petit_colis', ['pascalprecht.translate', 'ngRoute', 'ngCookies', 'flow']);
 
 /* CONTROLLER DECLARATION */
 app.controller('HomeController', HomeController);
@@ -62,6 +62,9 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
     };
     obj.showAdvert = function() {
         return $http.get(ressourceBase + "showLastAdvert");
+    };
+    obj.upload_avatar = function (pic_info) {
+        return $http.post(ressourceBase + "upload_avatar", pic_info);
     };
     return obj;
 }]);
@@ -154,6 +157,25 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
             });
         });
     }
+
+    $scope.processFiles = function(files){
+        angular.forEach(files, function(flowFile, i){
+            var fileReader = new FileReader();
+            fileReader.onload = function (event) {
+                var uri = event.target.result;
+                $rootScope.connectedUser.pic = uri;     
+                console.log(uri);
+
+                var pic_info = [
+                    $rootScope.connectedUser.idUsers,
+                    uri
+                ];
+                ressources.upload_avatar(pic_info)
+            };
+            fileReader.readAsDataURL(flowFile.file);
+        });
+
+    };
 }
 
 function mainController($scope, ressources) {

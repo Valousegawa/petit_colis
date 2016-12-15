@@ -48,6 +48,7 @@
   "profile.newsletter" : "Newsletter",
   "profile.oui" : "You subscribe at the newsletter.",
   "profile.non" : "You didn't subscribe at the newsletter.",
+  "profile.upload_avatar" : "Upload a new avatar",
 
   "alert.success" : "Registering signed in !",
   "alert.success.message" : "You are now registered. Please connect with your mail adress and password.",

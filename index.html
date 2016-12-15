@@ -32,6 +32,7 @@
         </button>
     </div>
     <div class="pull-right" ng-show="connected">
+        <img class="mini-img-circle" ng-src="{{connectedUser.pic}}"/>
         <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" ng-click="go('/profile')">
             {{"button.profile" | translate}}
         </button>
@@ -45,19 +46,7 @@
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>{{"alert.success" | translate}}</strong> {{"alert.success.message" | translate}}
 </div>
-<!--<nav class="navbar navbar-default" style="width: 40%;">-->
-<!--<ul class="nav navbar-nav">-->
-<!--<li>-->
-<!--<a href="/petit_colis/">{{"navbar.home" | translate}}</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href="/petit_colis/profile">{{"navbar.profile" | translate}}</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href="/petit_colis/ajouter_colis">{{"navbar.add_colis" | translate}}</a>-->
-<!--</li>-->
-<!--</ul>-->
-<!--</nav>-->
+
 <div>
     <form>
         <input type="text" name="ville_dep" placeHolder="Ville de départ">
@@ -65,6 +54,7 @@
         <input type="submit" value="Rechercher">
     </form>
 </div>
+
 <div ng-view></div>
 <div class="clearfix"></div>
 
@@ -221,6 +211,7 @@
 
 </body>
 <script type="text/javascript" src="js/angular.js"></script>
+<script src="js/ng-flow-standalone.js"></script>
 <script src="app/app.js"></script>
 <script src="js/jquery-3.1.1.js"></script>
 <script src="js/index.js"></script>

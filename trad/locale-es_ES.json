@@ -48,6 +48,7 @@
   "profile.newsletter" : "Hoja informativa",
   "profile.oui" : "Usted está suscrito a la newsletter.",
   "profile.non" : "Usted no está suscrito a la newsletter.",
+  "profile.upload_avatar" : "Subir une foto",
 
   "alert.success" : "Registro con éxito !",
   "alert.success.message" : "Ya está registrado. Inicia sesión con tu dirección de correo electrónico y contraseña.",
