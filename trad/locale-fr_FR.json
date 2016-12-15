@@ -48,6 +48,7 @@
   "profile.newsletter" : "Etat de newsletter",
   "profile.oui" : "Vous êtes abonné(e) à la newsletter.",
   "profile.non" : "Vous n'êtes pas abonné(e) à la newsletter.",
+  "profile.upload_avatar" : "Changer d'avatar",
 
   "alert.success" : "Inscription réussie !",
   "alert.success.message" : "Vous êtes désormais inscrit. Veuillez vous connecter avec votre adresse mail et votre mot de passe.",

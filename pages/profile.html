@@ -1,9 +1,12 @@
 <div>
-    <!--<div class="circle"></div>-->
     <div class="profil">
         <h1 class="yellowtail">{{"profile.title" | translate}}</h1>
         <hr class="major_hr"/>
-        <h3 class="yellowtail">{{user.user_prenom}} {{user.user_nom}}</h3>
+        <h3 class="yellowtail">{{user.user_prenom}} {{user.user_nom}}</h3><br/>
+        <div flow-init flow-name="uploader.flow" flow-files-added="processFiles($files)" flow-files-submitted="$flow.upload()"> 
+            <img class="img-circle center" ng-src="{{connectedUser.pic}}"/><br/><br/>
+            <button flow-btn type="file">{{'profile.upload_avatar' | translate}}</button><br/>
+        </div>
         <hr/>
 
         <label>{{"profile.date_inscription" | translate}} : </label>
