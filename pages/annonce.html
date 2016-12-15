@@ -1,3 +1,32 @@
 <div>
-	
+	<form ng-submit="advert()" id="advertform">
+		<div id="trajet">
+            <h4>Trajet</h4>
+            <hr>
+            Ville de départ<br>
+               	<input type="text" ng-model="ville_dep" name="ville_dep" placeholder="Exemple" value=""><br><br>
+            Ville d'arrivée<br>
+                <input type="text" ng-model="ville_arr" name="ville_arr" placeholder="Exemple" value="">
+        </div>
+        <br><br>
+        <div id="date_horaire">
+            <h4 class="col-md-7">Date et Horaire</h4>
+            <p class="col-md-3 col-md-offset-1"><input type="checkbox" ng-model="ar" name="ar"> Aller - Retour</p>
+            <br>
+            <hr>
+            Aller<br>
+                <input type="number" ng-model="date_dep" name="date_dep" placeholder="JJ-MM-AAAA" value=""><br><br>
+            Retour<br>
+                <input type="number" ng-model="date_arr" name="date_arr" placeholder="JJ-MM-AAAA" value="">
+        </div>
+        <br><br>
+        <input type="submit" name="continue" value="Continuer">
+    </form>
+    <form>
+    	<div>
+    		<h4>Participation demandée par passager</h4>
+    		<input type="text" ng-model="ville_dep" name="ville_dep" placeholder="Exemple" value="">
+    		<input type="text" ng-model="ville_arr" name="ville_arr" placeholder="Exemple" value="">
+    	</div>
+    </form>
 </div>
