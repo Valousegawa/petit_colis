@@ -11,8 +11,7 @@ app.controller('profileController', function ($scope, $rootScope) {
 });
 app.controller('addColisController', function ($scope) {
 });
-app.controller('annonceController', function ($scope) {
-});
+app.controller('annonceController', annonceController);
 
 /* CONFIG DECLARATION */
 app.config(function ($translateProvider) {
@@ -71,6 +70,11 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
     };
     obj.upload_avatar = function (pic_info) {
         return $http.post(ressourceBase + "upload_avatar", pic_info);
+    };
+    obj.addAdvert = function(advert) {
+        return $http.post(ressourceBase+ "addAdvert", advert).then(function(results){
+            return results;
+        });
     };
     return obj;
 }]);
@@ -191,4 +195,29 @@ function mainController($scope, ressources) {
     ressources.showAdvert().then(function (data){
         $scope.annonces = data.data;
     });
+}
+
+function annonceController($scope, ressources, $rootScope){
+    var annonce ={};
+    $scope.advert_one = function(){
+        annonce['ville_dep']=$scope.ville_dep;
+        annonce['ville_arr']=$scope.ville_arr;
+        annonce['a_r']=$scope.ar;
+        annonce['date_debut']=$scope.date_dep;
+        annonce['date_fin']=$scope.date_arr;
+        console.log(annonce);
+    }
+    $scope.advert_two = function(){
+        annonce['id_voyageur'] = $rootScope.connectedUser.idUsers;
+        annonce['prix']=$scope.prix;
+        annonce['nbr_kilos']=$scope.kilos;
+        annonce['commentaire']=$scope.commentary;
+        annonce['id_type_colis']=$scope.colis;
+        annonce['id_moyen_transport']=$scope.transport;
+        annonce['id_delai']=$scope.delais;
+        console.log(annonce);
+
+        ressources.addAdvert(annonce);
+    }
+    
 }
