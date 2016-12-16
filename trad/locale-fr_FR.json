@@ -2,11 +2,11 @@
   "en_US": "Anglais",
   "fr_FR": "Français",
   "es_ES": "Espagnol",
+  "de_DE": "Allemand",
+  "ch_CH": "Chinois",
+
 
   "title" : "Vos colis d'un battement de clic",
-  "title.home" : "",
-  "title.profile" : "",
-  "title.add_colis" : "",
 
   "button.connect" : "Se connecter",
   "button.join" : "Rejoindre la communauté",
@@ -16,9 +16,6 @@
   "title.temoignage" : "Ils nous font confiance ...",
   "title.last" : "Les dernières annonces",
   "title.howto" : "Comment ça marche ?",
-
-  "profile.message": "Vous êtes sur la page du profil !",
-  "add_colis.message": "Vous êtes sur la page pour ajouter un colis !",
 
   "message.choose" : "Choisissez un voyage",
   "message.choose.inner" : "Un colis à livrer ? Recherchez un voyageur susceptible d'aller où le colis doit se rendre !",
@@ -49,9 +46,14 @@
   "profile.oui" : "Vous êtes abonné(e) à la newsletter.",
   "profile.non" : "Vous n'êtes pas abonné(e) à la newsletter.",
   "profile.upload_avatar" : "Changer d'avatar",
+  "profile.toggle_newsletter" : "Changer",
 
   "alert.success" : "Inscription réussie !",
   "alert.success.message" : "Vous êtes désormais inscrit. Veuillez vous connecter avec votre adresse mail et votre mot de passe.",
+  "alert.error" : "Adresse mail déjà utilisée.",
+  "alert.error.message" : "Merci de vous connecter avec votre compte ou saisir une adresse différente.",
+  "alert.conn.error" : "Erreur de connexion.",
+  "alert.conn.error.message" : "Merci de vérifier les informations de connexions et réessayez.",
 
   "button.add_comment" : "Ajouter un commentaire",
   "button.add_annonce" : "Ajouter une annonce",

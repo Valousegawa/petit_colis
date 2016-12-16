@@ -1,0 +1,62 @@
+{
+  "en_US": "英語",
+  "fr_FR": "法國",
+  "es_ES": "西班牙語",
+  "de_DE": "德國",
+  "ch_CH" : "中國",
+
+  "title" : "您與跳動的點擊套餐",
+
+  "button.connect" : "登錄",
+  "button.join" : "加入社區",
+  "button.profile": "用戶配置文件",
+  "button.deco": "註銷",
+
+  "title.temoignage" : "他們信任我們......",
+  "title.last" : "最新廣告",
+  "title.howto" : "它是如何工作 ?",
+  
+  "message.choose" : "選擇行程",
+  "message.choose.inner" : "一個包交付？搜索一個旅行者可能會去那裡的包有去！",
+  "message.book" : "預訂",
+  "message.book.inner" : "你的包是準備去！請旅客安排！",
+  "message.wait" : "等待放鬆",
+  "message.wait.inner" : "包方，放鬆心情，等待收件人回复！",
+
+  "form.connexion" : "登錄",
+  "form.connexion.mdp" : "密碼",
+  "form.connexion.confirm_mdp" : "確認密碼",
+  "form.fermer" : "關閉",
+
+  "form.inscription" : "註冊",
+  "form.inscription.entreprise" : "業務",
+  "form.inscription.particulier" : "特別",
+  "form.inscription.homme" : "男",
+  "form.inscription.femme" : "女",
+  "form.inscription.prenom" : "名字",
+  "form.inscription.nom" : "姓",
+  "form.inscription.annee" : "出生年",
+  "form.inscription.texte" : "我想訂閱電子報收到提示和信息。",
+  "form.inscription.valider" : "驗證",
+
+  "profile.title" : "您的個人資料",
+  "profile.date_inscription" : "註冊日期",
+  "profile.newsletter" : "國家通訊",
+  "profile.oui" : "您訂閱的新聞郵件。",
+  "profile.non" : "您未訂閱電子報。",
+  "profile.upload_avatar" : "修改頭像",
+  "profile.toggle_newsletter" : "變化",
+
+  "alert.success" : "註冊成功！",
+  "alert.success.message" : "您現在已經註冊。請與您的電子郵件地址和密碼登錄。",
+  "alert.error" : "已使用的電子郵件地址。",
+  "alert.error.message" : "感謝您登錄與您的帳戶或輸入一個不同的地址。",
+  "alert.conn.error" : "連接錯誤。",
+  "alert.conn.error.message" : "感謝您的信息進行驗證連接並再次嘗試。",
+
+  "button.add_comment" : "添加評論",
+  "button.add_annonce" : "公告欄",
+  "form.comment.note" : "5速率",
+
+  "message.rights" : "保留所有權利。"
+}

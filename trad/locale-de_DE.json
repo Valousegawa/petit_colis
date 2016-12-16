@@ -1,0 +1,63 @@
+{
+  "en_US": "Englisch",
+  "fr_FR": "Französisch",
+  "es_ES": "Spanisch",
+  "de_DE": "Deutsch",
+  "ch_CH" : "Chinesisch",
+
+
+  "title" : "Ihre Pakete mit einem Klick auf zu schlagen",
+
+  "button.connect" : "Einloggen",
+  "button.join" : "Der Community beitreten",
+  "button.profile": "Profil",
+  "button.deco": "Ausloggen",
+
+  "title.temoignage" : "Sie vertrauen uns ...",
+  "title.last" : "Neueste Anzeigen",
+  "title.howto" : "So funktioniert es ?",
+
+  "message.choose" : "Wählen Sie Reise",
+  "message.choose.inner" : "Ein Paket geliefert werden? Suchen Sie ein Reisender könnte gehen, wo das Paket zu gehen!",
+  "message.book" : "Buchen Sie das Rennen",
+  "message.book.inner" : "Ihr Paket ist bereit zu gehen! Kontaktieren Sie die Reisenden dies zu arrangieren!",
+  "message.wait" : "Warten Sie und entspannen",
+  "message.wait.inner" : "Das Paket Party, entspannen und für die Antwort vom Empfänger warten!",
+
+  "form.connexion" : "Einloggen",
+  "form.connexion.mdp" : "Kennwort",
+  "form.connexion.confirm_mdp" : "Passwort bestätigen",
+  "form.fermer" : "Schließen",
+
+  "form.inscription" : "Anmeldung",
+  "form.inscription.entreprise" : "Unternehmen",
+  "form.inscription.particulier" : "Besondere",
+  "form.inscription.homme" : "Mann",
+  "form.inscription.femme" : "Frau",
+  "form.inscription.prenom" : "Vorname",
+  "form.inscription.nom" : "Name",
+  "form.inscription.annee" : "Geburtsjahr",
+  "form.inscription.texte" : "Ich möchte den Newsletter für Tipps und Informationen zu abonnieren.",
+  "form.inscription.valider" : "Bestätigen",
+
+  "profile.title" : "Votre profil",
+  "profile.date_inscription" : "Registriert seit",
+  "profile.newsletter" : "Staats Newsletter",
+  "profile.oui" : "Sie sind mit dem Newsletter.",
+  "profile.non" : "Sie sind nicht mit dem Newsletter.",
+  "profile.upload_avatar" : "Andern Avatar",
+  "profile.toggle_newsletter" : "Veränderung",
+
+  "alert.success" : "Erfolgreicher Registrierung!",
+  "alert.success.message" : "Sie sind nun registriert. Bitte melden Sie sich mit Ihrer E-Mail-Adresse und Ihr Passwort ein.",
+  "alert.error" : "E-Mail-Adresse bereits verwendet.",
+  "alert.error.message" : "Vielen Dank, dass Sie sich mit Ihrem Konto oder eine andere Adresse eingeben.",
+  "alert.conn.error" : "Verbindungsfehler.",
+  "alert.conn.error.message" : "Vielen Dank, dass Sie die Informationen Verbindungen zu überprüfen und versuchen Sie es erneut.",
+
+  "button.add_comment" : "Kommentar hinzufügen",
+  "button.add_annonce" : "Anzeige hinzufügen",
+  "form.comment.note" : "Rate von 5",
+
+  "message.rights" : "Alle Rechte vorbehalten"
+}

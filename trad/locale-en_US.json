@@ -2,11 +2,10 @@
   "en_US": "English",
   "fr_FR": "French",
   "es_ES": "Spanish",
+  "de_DE": "German",
+  "ch_CH" : "Chinese",
 
   "title" : "Your packages of a click beat",
-  "title.home" : "",
-  "title.profile" : "",
-  "title.add_colis" : "",
 
   "button.connect" : "Sign In",
   "button.join" : "Join the community",
@@ -16,9 +15,6 @@
   "title.temoignage" : "They trust us ...",
   "title.last" : "Last ads",
   "title.howto" : "How It works ?",
-
-  "profile.message": "You are at the profile page !",
-  "add_colis.message": "You are at the adding a package page !",
 
   "message.choose" : "Choose a travel",
   "message.choose.inner" : "Need to send a package ? Look for a traveler who can bring it to your recipient !",
@@ -49,9 +45,14 @@
   "profile.oui" : "You subscribe at the newsletter.",
   "profile.non" : "You didn't subscribe at the newsletter.",
   "profile.upload_avatar" : "Upload a new avatar",
+  "profile.toggle_newsletter" : "Change",
 
   "alert.success" : "Registering signed in !",
   "alert.success.message" : "You are now registered. Please connect with your mail adress and password.",
+  "alert.error" : "Email adress still in use.",
+  "alert.error.message" : "Please connect to your account or enter another email adress.",
+  "alert.conn.error" : "Failed to connect.",
+  "alert.conn.error.message" : "Please check your credentials and retry.",
 
   "button.add_comment" : "Add a comment",
   "button.add_annonce" : "Add an ad",

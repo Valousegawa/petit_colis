@@ -2,11 +2,10 @@
   "en_US": "Inglés",
   "fr_FR": "Francés",
   "es_ES": "Español",
+  "de_DE" : "Alemán",
+  "ch_CH" : "Chino",
 
   "title" : "Sus paquetes con un clic de golpeo",
-  "title.home" : "",
-  "title.profile" : "",
-  "title.add_colis" : "",
 
   "button.connect" : "Conectarse",
   "button.join" : "Parte de la comunidad",
@@ -16,9 +15,6 @@
   "title.temoignage" : "Ellos confiaron en nosotros ...",
   "title.last" : "De nuevos anuncios",
   "title.howto" : "Cómo funciona ?",
-
-  "profile.message": "Se encuentra en la página de perfil !",
-  "add_colis.message": "Se encuentra en la página para agregar una parcela !",
 
   "message.choose" : "Elegir un viaje",
   "message.choose.inner" : "Un paquete sea entregado? Buscar un viajero podría ir a donde el paquete tiene que ir!",
@@ -42,6 +38,7 @@
   "form.inscription.annee" : "Año de nacimiento",
   "form.inscription.texte" : "Decseo suscribirme a la newsletter para recibir consejos e información",
   "form.inscription.valider" : "Confirmar",
+  "profile.toggle_newsletter" : "Cambio",
 
   "profile.title" : "Su perfil",
   "profile.date_inscription" : "Fecha de Ingreso",
@@ -52,6 +49,10 @@
 
   "alert.success" : "Registro con éxito !",
   "alert.success.message" : "Ya está registrado. Inicia sesión con tu dirección de correo electrónico y contraseña.",
+  "alert.error" : "Mail ya utilizado.",
+  "alert.error.message" : "Gracias iniciar sesión con su cuenta o introducir una dirección diferente.",
+  "alert.conn.error" : "Error de conexión.",
+  "alert.conn.error.message" : "Compruebe sus credenciales y vuelva a intentarlo.",
 
   "button.add_comment" : "Añadir comentario",
   "button.add_annonce" : "Un anuncio",
