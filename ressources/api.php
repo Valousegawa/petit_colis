@@ -161,13 +161,40 @@
 			$query->bindValue(':uri', $user[1]);
 			$query->execute();
 		}
-
+		
 		private function toggle_newsletter(){
 			$user = json_decode(file_get_contents("php://input"),true);
 			$db = $this->dbConnect();
 			$query = $db->prepare("UPDATE users SET newsletter = :state WHERE idUsers = :id");
 			$query->bindValue(':id', $user[0]);
 			$query->bindValue(':state', $user[1]);
+			$query->execute();
+		}
+
+		private function addAdvert(){
+			if($this->get_request_method() !="POST"){
+				$this->response('', 406);
+			}
+			$advert = json_decode(file_get_contents("php://input"),true);
+			var_dump($advert);
+			$db = $this->dbConnect();
+
+
+			$date_deb = new DateTime($advert['date_debut']);
+			$date_fin = new DateTime($advert['date_fin']);
+			$query = $db->prepare("INSERT INTO annonce(ville_dep, ville_arr, date_debut, date_fin, id_voyageur, id_delai, commentaire, id_moyen_transport, prix, nbr_kilos, id_type_colis, a_r) VALUES(:ville_dep, :ville_arr, :date_debut, :date_fin, :id_voyageur, :id_delai, :commentaire, :id_moyen_transport, :prix, :nbr_kilos, :id_type_colis, :a_r)");
+			$query->bindValue(':ville_dep', $advert['ville_dep']);
+			$query->bindValue(':ville_arr', $advert['ville_arr']);
+			$query->bindValue(':date_debut', $date_deb->format("Y-m-d"));
+			$query->bindValue(':date_fin', $date_fin->format("Y-m-d"));
+			$query->bindValue(':id_voyageur', $advert['id_voyageur']);
+			$query->bindValue(':id_delai', $advert['id_delai']);
+			$query->bindValue(':commentaire', $advert['commentaire']);
+			$query->bindValue(':id_moyen_transport', $advert['id_moyen_transport']);
+			$query->bindValue(':prix', $advert['prix']);
+			$query->bindValue(':nbr_kilos', $advert['nbr_kilos']);
+			$query->bindValue(':id_type_colis', $advert['id_type_colis']);
+			$query->bindValue(':a_r', $advert['a_r']);
 			$query->execute();
 		}
 
