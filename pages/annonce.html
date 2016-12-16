@@ -13,12 +13,12 @@
         <br><br>
         <div id="date_horaire">
             <h4 class="col-md-7">Date et Horaire</h4>
-            <p class="col-md-3 col-md-offset-1"><input type="checkbox" ng-model="ar" name="ar"> Aller - Retour</p>
+            <p class="col-md-3 col-md-offset-1"><input type="checkbox" ng-model="ar" name="ar" ng-click="show = !show"> Aller - Retour</p>
             <br>
             <hr>
             Aller<br>
                 <input type="date" ng-model="date_dep" name="date_dep" placeholder="JJ-MM-AAAA" value=""><br><br>
-            <div>
+            <div ng-show="show">
             Retour<br>
                 <input type="date" ng-model="date_arr" name="date_arr" placeholder="JJ-MM-AAAA" value="">
             </div>

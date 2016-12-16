@@ -179,14 +179,19 @@
 			var_dump($advert);
 			$db = $this->dbConnect();
 
-
+			if($advert['a_r'] == NULL){
+				$date_f = NULL;
+			}
+			else{
+				$date_fin = new DateTime($advert['date_fin']);
+				$date_f = $date_fin->format("Y-m-d");
+			}
 			$date_deb = new DateTime($advert['date_debut']);
-			$date_fin = new DateTime($advert['date_fin']);
 			$query = $db->prepare("INSERT INTO annonce(ville_dep, ville_arr, date_debut, date_fin, id_voyageur, id_delai, commentaire, id_moyen_transport, prix, nbr_kilos, id_type_colis, a_r) VALUES(:ville_dep, :ville_arr, :date_debut, :date_fin, :id_voyageur, :id_delai, :commentaire, :id_moyen_transport, :prix, :nbr_kilos, :id_type_colis, :a_r)");
 			$query->bindValue(':ville_dep', $advert['ville_dep']);
 			$query->bindValue(':ville_arr', $advert['ville_arr']);
 			$query->bindValue(':date_debut', $date_deb->format("Y-m-d"));
-			$query->bindValue(':date_fin', $date_fin->format("Y-m-d"));
+			$query->bindValue(':date_fin', $date_f);
 			$query->bindValue(':id_voyageur', $advert['id_voyageur']);
 			$query->bindValue(':id_delai', $advert['id_delai']);
 			$query->bindValue(':commentaire', $advert['commentaire']);

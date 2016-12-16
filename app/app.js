@@ -71,6 +71,7 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
     };
     obj.toggle_newsletter = function (state) {
         return $http.post(ressourceBase + "toggle_newsletter", state);
+    };
     obj.addAdvert = function(advert) {
         return $http.post(ressourceBase+ "addAdvert", advert).then(function(results){
             return results;
