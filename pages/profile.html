@@ -3,9 +3,11 @@
         <h1 class="yellowtail">{{"profile.title" | translate}}</h1>
         <hr class="major_hr"/>
         <h3 class="yellowtail">{{user.user_prenom}} {{user.user_nom}}</h3><br/>
-        <div flow-init flow-name="uploader.flow" flow-files-added="processFiles($files)" flow-files-submitted="$flow.upload()"> 
+        <div flow-init flow-name="uploader.flow" flow-files-added="processFiles($files)"
+             flow-files-submitted="$flow.upload()">
             <img class="img-circle center" ng-src="{{connectedUser.pic}}"/><br/><br/>
-            <button flow-btn type="file">{{'profile.upload_avatar' | translate}}</button><br/>
+            <button flow-btn type="file">{{'profile.upload_avatar' | translate}}</button>
+            <br/>
         </div>
         <hr/>
 
@@ -18,6 +20,9 @@
         <label>{{"profile.newsletter" | translate}} : </label>
         <p ng-if="user.newsletter == 1">{{"profile.oui" | translate}}</p>
         <p ng-if="user.newsletter == 0">{{"profile.non" | translate}}</p>
-        <button type="button" class="btn" ng-click="toggle_newsletter(user.newsletter)">{{"profile.toggle_newsletter" | translate}}</button><br/><br/>
+        <button type="button" class="btn" ng-click="toggle_newsletter(user.newsletter)">{{"profile.toggle_newsletter" |
+            translate}}
+        </button>
+        <br/><br/>
     </div>
 </div>

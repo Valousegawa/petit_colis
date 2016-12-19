@@ -123,10 +123,13 @@
                     <input type="text" ng-model="user_prenom" name="user_prenom"
                            placeholder="{{'form.inscription.prenom' | translate}}" value="" ng-required="!user_prenom">
                     <input type="text" ng-model="user_nom" name="user_nom"
-                           placeholder="{{'form.inscription.nom' | translate}}" value="" ng-required="!user_nom"><br><br>
-                    <input type="text" ng-model="mail" name="mail" placeholder="E-mail" value="" ng-required="!mail"><br><br>
-                    <input type="password" ng-model="mdp" ng-required="!mdp" name="mdp" placeholder="{{'form.connexion.mdp' | translate}}"
-                           value="" ><br><br>
+                           placeholder="{{'form.inscription.nom' | translate}}" value=""
+                           ng-required="!user_nom"><br><br>
+                    <input type="text" ng-model="mail" name="mail" placeholder="E-mail" value=""
+                           ng-required="!mail"><br><br>
+                    <input type="password" ng-model="mdp" ng-required="!mdp" name="mdp"
+                           placeholder="{{'form.connexion.mdp' | translate}}"
+                           value=""><br><br>
                     <input type="password" name="mdp_verify" placeholder="{{'form.connexion.confirm_mdp' | translate}}"
                            value="" ng-required="!mdp_verify"><br><br>
                     <input type="number" ng-model="naissance" name="naissance"
@@ -134,7 +137,8 @@
                            value="" ng-required="!naissance"><br><br>
                     <input type="checkbox" ng-model="newsletter" name="newsletter"> {{'form.inscription.texte' |
                     translate}}<br><br>
-                    <input type="submit" name="send" value="{{'form.inscription.valider' | translate}}" ng-disabled="form.$invalid">
+                    <input type="submit" name="send" value="{{'form.inscription.valider' | translate}}"
+                           ng-disabled="form.$invalid">
                 </form>
             </div>
             <div class="modal-footer">
@@ -183,6 +187,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="js/angular-cookies.js"></script>
 <script src="js/angular-route.min.js"></script>
+<script src="js/angular-animate.js"></script>
 <script src="js/angular-md5.js"></script>
 <script src="js/angular-translate.js"></script>
 <script src="js/angular-translate-loader-static-files.js"></script>

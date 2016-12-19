@@ -92,3 +92,15 @@
     height: 50px;
     background-size: 150px 150px;
 }
+
+.select_form {
+    width: auto;
+}
+
+.boxme.ng-hide-add {
+    -webkit-animation: fadeOutLeftBig 5s;
+    /*display: block!important;*/
+}
+.boxme.ng-hide-remove {
+    -webkit-animation: fadeInLeftBig 5s;
+}

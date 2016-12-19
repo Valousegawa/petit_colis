@@ -1,62 +1,99 @@
 <div class="col-md-6 col-md-offset-2" ng-controller="annonceController">
-	<p><h1 ng-hide="valid">1</h1><h1 ng-show="valid">2</h1></p>
+    <p>
+        <img src="img/half.png" ng-hide="valid"/>
+        <img src="img/full.png" ng-show="valid"/>
+    </p>
 
-	<form id="partone" ng-submit="advert_one()" ng-hide="valid">
-		<div id="trajet">
-            <h4>Trajet</h4>
+    <form id="partone" ng-submit="advert_one()" ng-hide="valid">
+        <div id="trajet">
+            <h4 class="yellowtail">{{"annonce.trajet" | translate}}</h4>
             <hr>
-            Ville de départ<br>
-               	<input type="text" ng-model="ville_dep" name="ville_dep" placeholder="Exemple" value=""><br><br>
-            Ville d'arrivée<br>
-                <input type="text" ng-model="ville_arr" name="ville_arr" placeholder="Exemple" value="">
+            {{"annonce.ville_depart" | translate}}<br>
+            <input type="text" ng-model="ville_dep" name="ville_dep"
+                   placeholder="{{'annonce.ville_depart' | translate}}" value=""><br><br>
+            {{"annonce.ville_arrivee" | translate}}<br>
+            <input type="text" ng-model="ville_arr" name="ville_arr"
+                   placeholder="{{'annonce.ville_arrivee' | translate}}" value="">
         </div>
         <br><br>
         <div id="date_horaire">
-            <h4 class="col-md-7">Date et Horaire</h4>
-            <p class="col-md-3 col-md-offset-1"><input type="checkbox" ng-model="ar" name="ar"> Aller - Retour</p>
+            <h4 class="col-md-7">{{"annonce.date_horaire" | translate}}</h4>
+            <p class="col-md-3 col-md-offset-1"><input type="checkbox" ng-model="ar" name="ar"> {{"annonce.aller_retour"
+                | translate}}</p>
             <br>
             <hr>
-            Aller<br>
-                <input type="date" ng-model="date_dep" name="date_dep" placeholder="JJ-MM-AAAA" value=""><br><br>
+            {{"annonce.aller" | translate}}<br>
+            <input type="date" ng-model="date_dep" name="date_dep" placeholder="JJ-MM-AAAA" value=""><br><br>
             <div>
-            Retour<br>
+                {{"annonce.retour" | translate}}<br>
                 <input type="date" ng-model="date_arr" name="date_arr" placeholder="JJ-MM-AAAA" value="">
             </div>
         </div>
         <br><br>
-        <input type="submit" name="continue" value="Continuer" ng-click="valid = true">
+        <input type="submit" name="continue" value="{{'annonce.continue' | translate}}" ng-click="valid = true">
     </form>
+    <form id="advertform" ng-submit="advert_two()" ng-show="valid">
+        <div>
+            <h4>{{"annonce.participation_passager" | translate}}</h4><br>
+            <p>{{"annonce.ville_depart" | translate}} :
+                <input type="text" ng-model="ville_dep" name="ville_dep"
+                       placeholder="{{'annonce.ville_depart' | translate}}"
+                       value="">
+                {{"annonce.ville_arrivee" | translate}} :
+                <input type="text" ng-model="ville_arr" name="ville_arr"
+                       placeholder="{{'annonce.ville_arrivee' | translate}}"
+                       value=""><br><br>
+                {{"annonce.prix" | translate}} :
+                <input type="number" ng-model="prix" name="prix"
+                       placeholder="{{'annonce.prix' | translate}}" value="">
+            </p>
+        </div>
+        <br><br>
+        <div>
+            <h4>{{"annonce.kg" | translate}}</h4>
+            <input type="number" ng-model="kilos" name="kilos" placeholder="{{'annonce.kilo' | translate}}"
+                   value="">
+        </div>
+        <br><br>
+        <div>
+            <h4>{{"annonce.detail" | translate}}</h4><br>
+            <p>{{"annonce.detail_message" | translate}}</p>
+            <textarea rows="4" cols="50" ng-model="commentary" name="commentary"
+                      form="advertform" placeholder="{{'button.add_comment' | translate}}"></textarea>
+            <p>{{"annonce.no_need" | translate}} (<a href="">{{"annonce.regle" | translate}}</a>)</p>
+            <input type="checkbox" ng-model="com" name="com"> {{"annonce.same" | translate}}
+            <br>
+            <br>
+            <p>
+                {{"annonce.type" | translate}} :
+                <select ng-model="colis" class="form-control select_form" name="colis">
+                    <option ng-repeat="type in types" value="{{type.idTypes_Colis}}">{{type.nomType_colis |
+                        translate}}
+                    </option>
+                </select>
 
-    <form id="advertform" ng-submit="advert_two()" ng-show ="valid">
-    	<div>
-    		<h4>Participation demandée par passager</h4><br>
-    		<p>V.A : <input type="text" ng-model="ville_dep" name="ville_dep" placeholder="Exemple" value="">
-    		V.R : <input type="text" ng-model="ville_arr" name="ville_arr" placeholder="Exemple" value=""><br><br>
-    		Prix :<input type="number" ng-model="prix" name = "prix" placeholder="Prix" value=""></p>
-    	</div>
-    	<br><br>
-    	<div>
-    		<h4>Nombre de kilogrammes</h4>
-    		<input type="number" ng-model="kilos" name = "kilos" placeholder="Kilos" value="">
-    	</div><br><br>
-    	<div>
-    		<h4>Détails du voyage</h4><br>
-    		<p>Pour éviter de recevoir des questions, donnez des précisions sur votre trajet.</p>
-    		<textarea rows="4" cols="50" ng-model="commentary" name="commentary" 
-    		form="advertform"placeholder="{{'button.add_comment' | translate}}"></textarea>
-    		<p>N'ajoutez pas votre numéro de téléphone ou votre e-mail ici : votre profil les contient déjà. (<a href="">voir les règles</a>)</p>
-    			<input type="checkbox" ng-model="com" name="com"> Afficher le même commentaire pour l'aller et le retour
-    		<br>
-    		<br>
-    		<p>
-    			Type de colis : <input type="text" ng-model="colis" name="colis" value=""><br><br>
-    			Moyen de transport : <input type="text" ng-model="transport" name="transport" value=""><br><br>
-    			Délais : <input type="text" ng-model="delais" name="delais" value="">
-    		</p><br>
-    		<p>
-    			<input type="checkbox" ng-model="cond" name="cond"> J'accepte les <a href="">Conditions Générales</a> et la <a href="">Politique de Confidentialité</a>, certifie être en possession d'un permis de conduire et d'une assurance en cours de validité.
-    		</p>
-    	</div>
-    	<input type="submit" name="comfirm" value="Continuer et publier">
+                {{"annonce.transport" | translate}} :
+                <select ng-model="transport" class="form-control select_form" name="transport">
+                    <option ng-repeat="transport in transports" value="{{transport.idMoyens_transport}}">
+                        {{transport.nomMoyen_transport | translate}}
+                    </option>
+                </select>
+
+                {{"annonce.delai" | translate}} :
+                <select ng-model="delais" class="form-control select_form" name="delais">
+                    <option ng-repeat="delai in delais" value="{{delai.idDelai}}">{{delai.nomDelai |
+                        translate}}
+                    </option>
+                </select>
+            </p>
+            <br>
+            <p>
+                <input type="checkbox" ng-model="cond" name="cond">
+                {{"annonce.accept_1" | translate}} <a href=''>{{"annonce.accept_2" | translate}}</a>
+                {{"annonce.accept_3" | translate}} <a href=''>{{"annonce.accept_4" | translate}}</a>,
+                {{"annonce.accept_5" | translate}}
+            </p>
+        </div>
+        <input type="submit" name="comfirm" value="{{'annonce.continue_publish' | translate}}">
     </form>
 </div>

@@ -3,9 +3,11 @@
         <h3 class="yellowtail">{{"title.last" | translate}}</h3>
         <hr>
         <div ng-repeat="annonce in annonces track by $index">
-            <h4 class="yellowtail">{{annonce.user_prenom}} {{annonce.user_nom}} propose le voyage suivant : {{annonce.ville_dep}} - {{annonce.ville_arr}}</h4>
+            <h4 class="yellowtail">{{annonce.user_prenom}} {{annonce.user_nom}} propose le voyage suivant :
+                {{annonce.ville_dep}} - {{annonce.ville_arr}}</h4>
             <p class="col-md-7 col-md-offset-1">{{annonce.commentaire}}</p>
-            <p class="col-md-3 col-md-offset-1">Prix : {{annonce.prix}}€<br> Kilos : {{annonce.nbr_kilos}}<br> Transport : {{annonce.nomMoyen_transport}}</p>
+            <p class="col-md-3 col-md-offset-1">Prix : {{annonce.prix}}€<br> Kilos : {{annonce.nbr_kilos}}<br> Transport
+                : {{annonce.nomMoyen_transport}}</p>
             <br>
         </div>
     </div>
@@ -14,7 +16,8 @@
         <h3 class="yellowtail">{{"title.temoignage" | translate}}</h3>
         <hr class="major_hr">
         <div ng-repeat="temoignage in temoignages track by $index">
-            <h4 class="yellowtail"><img class="mini-img-circle" ng-src="{{temoignage.pic}}"/>  {{temoignage.user_prenom}} {{temoignage.user_nom}}</h4>
+            <h4 class="yellowtail"><img class="mini-img-circle" ng-src="{{temoignage.pic}}"/> {{temoignage.user_prenom}}
+                {{temoignage.user_nom}}</h4>
             <hr>
             <p>{{temoignage.commentaire}}</p>
             <br>

@@ -1,5 +1,5 @@
 /* MODULE DECLARATION */
-var app = angular.module('petit_colis', ['pascalprecht.translate', 'ngRoute', 'ngCookies', 'flow', 'angular-md5']);
+var app = angular.module('petit_colis', ['pascalprecht.translate', 'ngRoute', 'ngCookies', 'flow', 'angular-md5', 'ngAnimate']);
 
 /* CONTROLLER DECLARATION */
 app.controller('HomeController', HomeController);
@@ -20,6 +20,7 @@ app.config(function ($translateProvider) {
     $translateProvider.preferredLanguage('fr_FR');
 });
 app.config(function ($routeProvider, $locationProvider) {
+    //Initialisation des routes
     $routeProvider
         .when('/', {
             templateUrl: 'pages/home.html',
@@ -63,7 +64,7 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
             return results;
         });
     };
-    obj.showAdvert = function() {
+    obj.showAdvert = function () {
         return $http.get(ressourceBase + "showLastAdvert");
     };
     obj.upload_avatar = function (pic_info) {
@@ -71,8 +72,24 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
     };
     obj.toggle_newsletter = function (state) {
         return $http.post(ressourceBase + "toggle_newsletter", state);
-    obj.addAdvert = function(advert) {
-        return $http.post(ressourceBase+ "addAdvert", advert).then(function(results){
+    };
+    obj.addAdvert = function (advert) {
+        return $http.post(ressourceBase + "addAdvert", advert).then(function (results) {
+            return results;
+        });
+    };
+    obj.getDelai = function () {
+        return $http.post(ressourceBase + "getDelai").then(function (results) {
+            return results;
+        });
+    };
+    obj.getTransport = function () {
+        return $http.post(ressourceBase + "getTransport").then(function (results) {
+            return results;
+        });
+    };
+    obj.getType = function () {
+        return $http.post(ressourceBase + "getType").then(function (results) {
             return results;
         });
     };
@@ -89,7 +106,8 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
         $("#alert_sub_success").hide();
     });
 
-    if($cookies.getObject('petit_colis.credentials')){
+    //Vérification des cookies
+    if ($cookies.getObject('petit_colis.credentials')) {
         var donnees = $cookies.getObject('petit_colis.credentials');
         ressources.getUser(donnees).then(function (data) {
             $rootScope.isConnected = true;
@@ -98,6 +116,7 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
         });
     }
 
+    //Evènement de connexion
     $scope.$on("loginState", function () {
         if ($rootScope.isConnected) {
             $scope.connected = true;
@@ -106,9 +125,12 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
         }
     });
 
+    //Méthode simulant un changement de route
     $scope.go = function (path) {
         $location.path(path);
     };
+
+    //Traitement de la déconnexion : changement d'état général, redirection vers l'accueil et suppression du cookie
     $scope.disconnect = function () {
         $rootScope.isConnected = false;
         $rootScope.$broadcast("loginState");
@@ -116,12 +138,14 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
         $location.path("/");
     };
 
-
+    //Système de gestion d'internalisation
     $scope.language = 'fr_FR';
     $scope.languages = ['en_US', 'fr_FR', 'es_ES', 'de_DE', 'ch_CH'];
     $scope.updateLanguage = function () {
         $translate.use($scope.language);
     };
+
+    //Gère l'inscription 
     $scope.connect = function () {
         var data = [
             $scope.genre,
@@ -134,7 +158,7 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
             $scope.rang
         ];
         ressources.inscription(data).then(function (state) {
-            if(state == 1) {
+            if (state == 1) {
                 $(function () {
                     $("#myInscription").modal('toggle');
                     $("#alert_sub_success").show();
@@ -145,16 +169,18 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
                     $("#alert_sub_error").removeClass("hide");
                 });
             }
-            
+
         });
     };
+
+    //Gère la connexion
     $scope.submit = function () {
         var donnees = [
             $scope.email,
             md5.createHash($scope.passwd || ''),
         ];
         ressources.getUser(donnees).then(function (data) {
-            if(data.data == 0){
+            if (data.data == 0) {
                 $("#alert_conn_error").removeClass("hide");
             } else {
                 $rootScope.isConnected = true;
@@ -169,6 +195,8 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
             }
         });
     };
+
+    //Gère l'ajout de commentaire
     $scope.comment = function () {
         var com = [
             $scope.id_user = $rootScope.connectedUser.idUsers,
@@ -183,12 +211,13 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
         });
     }
 
-    $scope.processFiles = function(files){
-        angular.forEach(files, function(flowFile, i){
+    //Gère l'upload d'image
+    $scope.processFiles = function (files) {
+        angular.forEach(files, function (flowFile, i) {
             var fileReader = new FileReader();
             fileReader.onload = function (event) {
                 var uri = event.target.result;
-                $rootScope.connectedUser.pic = uri;     
+                $rootScope.connectedUser.pic = uri;
                 var pic_info = [
                     $rootScope.connectedUser.idUsers,
                     uri
@@ -200,10 +229,11 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
 
     };
 
-    $scope.toggle_newsletter = function(state_n){
-        if(state_n == 1) {
+    //Gère le changement d'inscription à la newsletter
+    $scope.toggle_newsletter = function (state_n) {
+        if (state_n == 1) {
             state_n = 0;
-        } else if(state_n == 0){
+        } else if (state_n == 0) {
             state_n = 1;
         }
         var state = [
@@ -219,32 +249,41 @@ function mainController($scope, ressources) {
     ressources.showComment().then(function (data) {
         $scope.temoignages = data.data;
     });
-    ressources.showAdvert().then(function (data){
+    ressources.showAdvert().then(function (data) {
         $scope.annonces = data.data;
     });
 }
 
-function annonceController($scope, ressources, $rootScope){
-    var annonce ={};
-    $scope.advert_one = function(){
-        annonce['ville_dep']=$scope.ville_dep;
-        annonce['ville_arr']=$scope.ville_arr;
-        annonce['a_r']=$scope.ar;
-        annonce['date_debut']=$scope.date_dep;
-        annonce['date_fin']=$scope.date_arr;
+function annonceController($scope, ressources, $rootScope) {
+    ressources.getType().then(function (data) {
+        $scope.types = data.data;
+    });
+    ressources.getTransport().then(function (data) {
+        $scope.transports = data.data;
+    });
+    ressources.getDelai().then(function (data) {
+        $scope.delais = data.data;
+    });
+    var annonce = {};
+    $scope.advert_one = function () {
+        annonce['ville_dep'] = $scope.ville_dep;
+        annonce['ville_arr'] = $scope.ville_arr;
+        annonce['a_r'] = $scope.ar;
+        annonce['date_debut'] = $scope.date_dep;
+        annonce['date_fin'] = $scope.date_arr;
         console.log(annonce);
     }
-    $scope.advert_two = function(){
+    $scope.advert_two = function () {
         annonce['id_voyageur'] = $rootScope.connectedUser.idUsers;
-        annonce['prix']=$scope.prix;
-        annonce['nbr_kilos']=$scope.kilos;
-        annonce['commentaire']=$scope.commentary;
-        annonce['id_type_colis']=$scope.colis;
-        annonce['id_moyen_transport']=$scope.transport;
-        annonce['id_delai']=$scope.delais;
+        annonce['prix'] = $scope.prix;
+        annonce['nbr_kilos'] = $scope.kilos;
+        annonce['commentaire'] = $scope.commentary;
+        annonce['id_type_colis'] = $scope.colis;
+        annonce['id_moyen_transport'] = $scope.transport;
+        annonce['id_delai'] = $scope.delais;
         console.log(annonce);
 
         ressources.addAdvert(annonce);
     }
-    
+
 }
