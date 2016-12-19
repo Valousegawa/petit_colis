@@ -197,32 +197,58 @@ class API extends REST
     }
 
     //Ajoute une annonce
-    private function addAdvert()
-    {
-        if ($this->get_request_method() != "POST") {
-            $this->response('', 406);
+    private function addAdvert(){
+            if($this->get_request_method() !="POST"){
+                $this->response('', 406);
+            }
+            $advert = json_decode(file_get_contents("php://input"),true);
+            var_dump($advert);
+            $db = $this->dbConnect();
+
+            if($advert['a_r'] == NULL){
+                $date_f = NULL;
+            }
+            else{
+                $date_fin = new DateTime($advert['date_fin']);
+                $date_f = $date_fin->format("Y-m-d");
+            }
+            $date_deb = new DateTime($advert['date_debut']);
+            $query = $db->prepare("INSERT INTO annonce(ville_dep, ville_arr, date_debut, date_fin, id_voyageur, id_delai, commentaire, id_moyen_transport, prix, nbr_kilos, id_type_colis, a_r) VALUES(:ville_dep, :ville_arr, :date_debut, :date_fin, :id_voyageur, :id_delai, :commentaire, :id_moyen_transport, :prix, :nbr_kilos, :id_type_colis, :a_r)");
+            $query->bindValue(':ville_dep', $advert['ville_dep']);
+            $query->bindValue(':ville_arr', $advert['ville_arr']);
+            $query->bindValue(':date_debut', $date_deb->format("Y-m-d"));
+            $query->bindValue(':date_fin', $date_f);
+            $query->bindValue(':id_voyageur', $advert['id_voyageur']);
+            $query->bindValue(':id_delai', $advert['id_delai']);
+            $query->bindValue(':commentaire', $advert['commentaire']);
+            $query->bindValue(':id_moyen_transport', $advert['id_moyen_transport']);
+            $query->bindValue(':prix', $advert['prix']);
+            $query->bindValue(':nbr_kilos', $advert['nbr_kilos']);
+            $query->bindValue(':id_type_colis', $advert['id_type_colis']);
+            $query->bindValue(':a_r', $advert['a_r']);
+            $query->execute();
         }
-        $advert = json_decode(file_get_contents("php://input"), true);
-        $db = $this->dbConnect();
 
+    private function showAdverts(){
+            if($this->get_request_method() !="POST"){
+                $this->response('', 406);
+            }
+            $advert = json_decode(file_get_contents("php://input"),true);
+            $db = $this->dbConnect();
+            $d_d = new DateTime($advert[2], new DateTimeZone('Europe/Paris'));
+            $d_d->add(new DateInterval('PT1H'));
 
-        $date_deb = new DateTime($advert['date_debut']);
-        $date_fin = new DateTime($advert['date_fin']);
-        $query = $db->prepare("INSERT INTO annonce(ville_dep, ville_arr, date_debut, date_fin, id_voyageur, id_delai, commentaire, id_moyen_transport, prix, nbr_kilos, id_type_colis, a_r) VALUES(:ville_dep, :ville_arr, :date_debut, :date_fin, :id_voyageur, :id_delai, :commentaire, :id_moyen_transport, :prix, :nbr_kilos, :id_type_colis, :a_r)");
-        $query->bindValue(':ville_dep', $advert['ville_dep']);
-        $query->bindValue(':ville_arr', $advert['ville_arr']);
-        $query->bindValue(':date_debut', $date_deb->format("Y-m-d"));
-        $query->bindValue(':date_fin', $date_fin->format("Y-m-d"));
-        $query->bindValue(':id_voyageur', $advert['id_voyageur']);
-        $query->bindValue(':id_delai', $advert['id_delai']);
-        $query->bindValue(':commentaire', $advert['commentaire']);
-        $query->bindValue(':id_moyen_transport', $advert['id_moyen_transport']);
-        $query->bindValue(':prix', $advert['prix']);
-        $query->bindValue(':nbr_kilos', $advert['nbr_kilos']);
-        $query->bindValue(':id_type_colis', $advert['id_type_colis']);
-        $query->bindValue(':a_r', $advert['a_r']);
-        $query->execute();
-    }
+            $query = $db->prepare("SELECT * FROM annonce, users, delai, moyens_transport, types_colis WHERE idUsers=id_voyageur AND idDelai=id_delai AND id_moyen_transport=idMoyens_transport AND id_type_colis=idTypes_colis AND ville_dep=:ville_dep AND ville_arr=:ville_arr AND date_debut=:date_debut");
+            $query->bindValue(':ville_dep', $advert[0]);
+            $query->bindValue(':ville_arr', $advert[1]);
+            $query->bindValue(':date_debut', $d_d->format("Y-m-d"));
+            $query->execute();
+            $result = array(); 
+            while ($r = $query->fetch(PDO::FETCH_ASSOC)){
+                $result[] = $r;
+            }
+            $this->json($result);
+        }
 
     //Récupère la liste des délais
     private function getDelai()
@@ -275,7 +301,7 @@ class API extends REST
     }
 }
 
-// Initiiate Library
+// Initialize Library
 $api = new API;
 $api->processApi();
 ?>

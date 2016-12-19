@@ -73,11 +73,6 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
     obj.toggle_newsletter = function (state) {
         return $http.post(ressourceBase + "toggle_newsletter", state);
     };
-    obj.addAdvert = function (advert) {
-        return $http.post(ressourceBase + "addAdvert", advert).then(function (results) {
-            return results;
-        });
-    };
     obj.getDelai = function () {
         return $http.post(ressourceBase + "getDelai").then(function (results) {
             return results;
@@ -93,6 +88,16 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
             return results;
         });
     };
+    obj.addAdvert = function (advert) {
+        return $http.post(ressourceBase + "addAdvert", advert).then(function (results) {
+            return results;
+        });
+    };
+    obj.showAdverts = function(adverts) {
+        return $http.post(ressourceBase+ "showAdverts", adverts).then(function(results){
+            return results;
+        });
+    }
     return obj;
 }]);
 
@@ -243,6 +248,17 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
         ressources.toggle_newsletter(state);
         $rootScope.connectedUser.newsletter = state_n;
     }
+    $scope.showAdverts = function(){
+        var ad = [
+            $scope.ville_d,
+            $scope.ville_a,
+            $scope.date_d
+        ];
+        console.log(ad);
+        ressources.showAdverts(ad).then(function(data){
+            $scope.advertsall = data.data;
+        });
+    };
 }
 
 function mainController($scope, ressources) {
