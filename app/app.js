@@ -10,6 +10,7 @@ app.controller('profileController', function ($scope, $rootScope) {
     }
 });
 app.controller('annonceController', annonceController);
+app.controller('detailAnnonceController', detailAnnonceController);
 
 /* CONFIG DECLARATION */
 app.config(function ($translateProvider) {
@@ -101,7 +102,12 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
         return $http.post(ressourceBase+ "showAdverts", adverts).then(function(results){
             return results;
         });
-    }
+    };
+    obj.showDetail = function(id) {
+        return $http.post(ressourceBase+ "showDetail", id).then(function(results){
+            return results;
+        });
+    };
     return obj;
 }]);
 
@@ -274,7 +280,7 @@ function mainController($scope, ressources) {
     });
 }
 
-function annonceController($scope, ressources, $rootScope) {
+function annonceController($scope, ressources, $rootScope, $location) {
     ressources.getType().then(function (data) {
         $scope.types = data.data;
     });
@@ -300,10 +306,18 @@ function annonceController($scope, ressources, $rootScope) {
         annonce['commentaire'] = $scope.commentary;
         annonce['id_type_colis'] = $scope.colis;
         annonce['id_moyen_transport'] = $scope.transport;
-        annonce['id_delai'] = $scope.delais;
+        annonce['id_delai'] = $scope.delai;
         console.log(annonce);
 
         ressources.addAdvert(annonce);
+        $location.path("/");    
     }
 
+}
+
+function detailAnnonceController($scope, ressources, $routeParams){
+    console.log($routeParams.id);
+    ressources.showDetail($routeParams.id).then(function(data){
+        $scope.advertsdetail = data.data;
+    });
 }

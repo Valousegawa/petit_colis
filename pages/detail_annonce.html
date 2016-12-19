@@ -1,0 +1,16 @@
+<div ng-app="petit_colis">
+<div ng-controller="detailAnnonceController">
+	<div ng-repeat="add in advertsdetail track by $index">
+
+		<p>
+			NOM DU VOYAGEUR : {{add.user_nom}} {{add.user_prenom}}<br>
+			ALLER - RETOUR : {{add.a_r}}<br>
+			DATE DEBUT : {{add.date_debut}} 
+			DATE FIN : {{add.date_fin}}<br>
+			COMMENTAIRE : {{add.commentaire}}<br>
+			PRIX : {{add.prix}} KILOS : {{add.nbr_kilos}}<br>
+			MOYEN DE TRANSPORT : {{add.nomMoyen_transport}}
+		</p>
+	</div>
+</div>
+</div>
