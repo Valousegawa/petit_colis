@@ -10,6 +10,7 @@ app.controller('profileController', function ($scope, $rootScope) {
     }
 });
 app.controller('annonceController', annonceController);
+app.controller('detailAnnonceController', detailAnnonceController);
 
 /* CONFIG DECLARATION */
 app.config(function ($translateProvider) {
@@ -101,7 +102,12 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
         return $http.post(ressourceBase+ "showAdverts", adverts).then(function(results){
             return results;
         });
-    }
+    };
+    obj.showDetail = function(id) {
+        return $http.post(ressourceBase+ "showDetail", id).then(function(results){
+            return results;
+        });
+    };
     return obj;
 }]);
 
@@ -309,4 +315,11 @@ function annonceController($scope, ressources, $rootScope, $location) {
         $location.path("/");
     }
 
+}
+
+function detailAnnonceController($scope, ressources, $routeParams){
+    console.log($routeParams.id);
+    ressources.showDetail($routeParams.id).then(function(data){
+        $scope.advertsdetail = data.data;
+    });
 }

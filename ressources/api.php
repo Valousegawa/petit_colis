@@ -248,7 +248,24 @@ class API extends REST
                 $result[] = $r;
             }
             $this->json($result);
+    }
+
+    private function showDetail(){
+    	if($this->get_request_method() !="POST"){
+            $this->response('', 406);
         }
+        $detail = json_decode(file_get_contents("php://input"),true);
+        $db = $this->dbConnect();
+
+        $query = $db->prepare("SELECT * FROM annonce, users, delai, moyens_transport, types_colis WHERE idUsers=id_voyageur AND idDelai=id_delai AND id_moyen_transport=idMoyens_transport AND id_type_colis=idTypes_colis AND idAnnonce=:id");
+        $query->bindValue(':id', $detail);
+        $query->execute();
+        $result = array(); 
+        while ($r = $query->fetch(PDO::FETCH_ASSOC)){
+            $result[] = $r;
+        }
+        $this->json($result);
+    }
 
     //Récupère la liste des délais
     private function getDelai()

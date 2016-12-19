@@ -104,3 +104,8 @@
 .boxme.ng-hide-remove {
     -webkit-animation: fadeInLeftBig 5s;
 }
+
+.search {
+    width: 250px;
+    margin-right: 20px;
+}
