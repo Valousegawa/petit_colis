@@ -97,8 +97,12 @@
   "annonce.accept_4" : "Datenschutz",
   "annonce.accept_5" : "im Besitz einer Fahrerlaubnis und Versicherung gültig zertifizieren.",
   "annonce.regle" : "siehe Regeln",
-  "annonce.continue" : "fortsetzen",
+  "annonce.continue" : "Fortsetzen",
   "annonce.continue_publish" : "Weiter und veröffentlichen",
+
+  "message.propose" : "bietet folgende Reise",
+  "message.resultat" : "Ergebnisse",
+  "message.recherche" : "Suchen",
 
   "message.rights" : "Alle Rechte vorbehalten"
 }

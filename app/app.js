@@ -252,14 +252,16 @@ function HomeController($window, $translate, $scope, $rootScope, ressources, $lo
         ressources.toggle_newsletter(state);
         $rootScope.connectedUser.newsletter = state_n;
     }
+
+    //Affiche les résultats de la recherche
     $scope.showAdverts = function(){
         var ad = [
             $scope.ville_d,
             $scope.ville_a,
             $scope.date_d
         ];
-        console.log(ad);
         ressources.showAdverts(ad).then(function(data){
+            console.log(data);
             $scope.advertsall = data.data;
         });
     };
@@ -274,7 +276,7 @@ function mainController($scope, ressources) {
     });
 }
 
-function annonceController($scope, ressources, $rootScope) {
+function annonceController($scope, ressources, $rootScope, $location) {
     ressources.getType().then(function (data) {
         $scope.types = data.data;
     });
@@ -300,10 +302,11 @@ function annonceController($scope, ressources, $rootScope) {
         annonce['commentaire'] = $scope.commentary;
         annonce['id_type_colis'] = $scope.colis;
         annonce['id_moyen_transport'] = $scope.transport;
-        annonce['id_delai'] = $scope.delais;
+        annonce['id_delai'] = $scope.delai;
         console.log(annonce);
 
         ressources.addAdvert(annonce);
+        $location.path("/");
     }
 
 }

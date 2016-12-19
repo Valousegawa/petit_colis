@@ -1,14 +1,24 @@
 <div ng-controller='mainController'>
-    <div id="last" class="col-md-4 col-md-offset-2">
+    <div id="last" class="col-md-5 col-md-offset-1">
         <h3 class="yellowtail">{{"title.last" | translate}}</h3>
-        <hr>
-        <div ng-repeat="annonce in annonces track by $index">
-            <h4 class="yellowtail">{{annonce.user_prenom}} {{annonce.user_nom}} propose le voyage suivant :
-                {{annonce.ville_dep}} - {{annonce.ville_arr}}</h4>
-            <p class="col-md-7 col-md-offset-1">{{annonce.commentaire}}</p>
-            <p class="col-md-3 col-md-offset-1">Prix : {{annonce.prix}}€<br> Kilos : {{annonce.nbr_kilos}}<br> Transport
-                : {{annonce.nomMoyen_transport}}</p>
-            <br>
+        <hr class="major_hr">
+        <div ng-repeat="ads in annonces track by $index">
+            <div class="col-md-4" >
+                <h4 class="yellowtail"><img class="mini-img-circle" ng-src="{{ads.pic}}"/>  {{ads.user_prenom}} {{ads.user_nom}}</h4>  
+            </div>
+            <div class="col-md-6">
+                Voyage proposé le {{ads.date_debut | date : 'd/M/yyyy'}}<br/>
+                {{ads.nomDelai | translate}}/{{ads.commentaire}}<br/>
+                <img src="img/start.png" width="16" height="16"/> {{ads.ville_dep}}<br/>
+                <img src="img/finish.png" width="16" height="16"/> {{ads.ville_arr}}<br/>
+                {{"annonce.transport" | translate}} : {{ads.nomMoyen_transport | translate}}
+            </div>
+            <div class="col-md-2>">
+            {{"annonce.prix" | translate}} : {{ads.prix}}€<br/>
+            {{"annonce.kilo" | translate}} : {{ads.nbr_kilos}}<br/> 
+            </div>
+            <div class="clearfix"></div>
+            <hr/>
         </div>
     </div>
 
@@ -40,7 +50,7 @@
 
     <div class="howto col-md-offset-2 col-sm-8" style="height: auto;">
         <h3 class="yellowtail" style="text-align: center">{{"title.howto" | translate}}</h3>
-        <hr/>
+        <hr class="major_hr">
         <div class="col-md-offset-1 col-md-2">
             <div class="circle center" style="background: url('img/luggage.png') no-repeat center"></div>
             <div class="center">

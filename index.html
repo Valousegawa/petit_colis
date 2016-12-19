@@ -48,29 +48,40 @@
 </div>
 
 <div>
-    <form ng-submit="showAdverts()">
-        <input type="text" ng-model="ville_d" name="ville_d" placeHolder="Ville de départ">
-        <input type="text" ng-model="ville_a" name="ville_a" placeHolder="Ville d'arrivée">
-        <input type="date" ng-model="date_d" name="date_dep">
-        <input type="submit" ng-click="show = true" value="Rechercher">
+    <form ng-submit="showAdverts()" class="center form-inline">
+        <input class="form-control search" type="text" ng-model="ville_d" name="ville_d" placeHolder="{{'annonce.ville_depart' | translate}}">
+        <input class="form-control search" type="text" ng-model="ville_a" name="ville_a" placeHolder="{{'annonce.ville_arrivee' | translate}}">
+        <input class="form-control search" type="date" ng-model="date_d" name="date_dep">
+        <input type="submit" ng-click="show = true" value="{{'message.recherche' | translate}}">
     </form>
 </div>
 
-<br>
+<br><br>
 
 <div ng-view ng-hide="show"></div>
+<div id="advertsall" ng-show="show">
+    <h2 class="yellowtail center">{{"message.resultat" | translate}}</h2>
+    <hr>
+    <div ng-repeat="ads in advertsall track by $index" class="col-md-offset-1 col-md-9">
+        <div class="col-md-3" >
+            <h4 class="yellowtail"><img class="mini-img-circle" ng-src="{{ads.pic}}"/>  {{ads.user_prenom}} {{ads.user_nom}}</h4>  
+        </div>
+        <div class="col-md-6">
+            Voyage proposé le {{ads.date_debut | date : 'd/M/yyyy'}}<br/>
+            {{ads.nomDelai | translate}}/{{ads.commentaire}}<br/>
+            <img src="img/start.png" width="16" height="16"/> {{ads.ville_dep}}<br/>
+            <img src="img/finish.png" width="16" height="16"/> {{ads.ville_arr}}<br/>
+            {{"annonce.transport" | translate}} : {{ads.nomMoyen_transport | translate}}
+        </div>
+        <div class="col-md_2>">
+        {{"annonce.prix" | translate}} : {{ads.prix}}€<br/>
+        {{"annonce.kilo" | translate}} : {{ads.nbr_kilos}}<br/> 
+        </div>
+        <hr>
+    </div
+</div>
 <div class="clearfix"></div>
 
-<div id="advertsall" ng-show="show">
-    <h3 class="yellowtail">Resultats</h3>
-    <hr>
-    <div ng-repeat="ads in advertsall track by $index">
-        <h4 class="yellowtail">{{ads.user_prenom}} {{ads.user_nom}} propose le voyage suivant : {{ads.ville_dep}} - {{ads.ville_arr}}</h4>
-        <p class="col-md-7 col-md-offset-1">{{ads.commentaire}}</p>
-        <p class="col-md-3 col-md-offset-1">Prix : {{ads.prix}}€<br> Kilos : {{ads.nbr_kilos}}<br> Transport : {{ads.nomMoyen_transport}}</p>
-        <br>
-    </div>
-</div>
 
 <br/>
 <br/>

@@ -63,13 +63,13 @@
   "Meuble" : "Muebles",
   "Objets imposants" : "Objetos grandes",
 
-  "Urgent" : "urgente",
-  "Tous" : "todos",
+  "Urgent" : "Urgente",
+  "Tous" : "Todos",
 
-  "Voiture" : "coche",
-  "Train" : "tren",
-  "Avion" : "avión",
-  "Bateau" : "barco",
+  "Voiture" : "Coche",
+  "Train" : "Tren",
+  "Avion" : "Avión",
+  "Bateau" : "Barco",
   "Vaisseau de la vierge marie" : "Embarcación de la Virgen María",
 
   "annonce.trajet" : "Camino",
@@ -98,6 +98,10 @@
   "annonce.regle" : "Ver Reglas",
   "annonce.continue" : "Continuar",
   "annonce.continue_publish" : "Continuar y publicar",
+
+  "message.propose" : "Ofrece el siguiente recorrido",
+  "message.resultat" : "Resultados",
+  "message.recherche" : "Búsqueda",
 
   "message.rights" : "Todos los derechos reservados"
 }

@@ -100,5 +100,9 @@
   "annonce.continue" : "Continuer",
   "annonce.continue_publish" : "Continuer et publier",
 
+  "message.propose" : "propose le voyage suivant",
+  "message.resultat" : "Résultats",
+  "message.recherche" : "Rechercher",
+
   "message.rights" : "Tous droits réservés"
 }
