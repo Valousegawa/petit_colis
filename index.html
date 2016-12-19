@@ -48,15 +48,29 @@
 </div>
 
 <div>
-    <form>
-        <input type="text" name="ville_dep" placeHolder="Ville de départ">
-        <input type="text" name="ville_arr" placeHolder="Ville d'arrivée">
-        <input type="submit" value="Rechercher">
+    <form ng-submit="showAdverts()">
+        <input type="text" ng-model="ville_d" name="ville_d" placeHolder="Ville de départ">
+        <input type="text" ng-model="ville_a" name="ville_a" placeHolder="Ville d'arrivée">
+        <input type="date" ng-model="date_d" name="date_dep">
+        <input type="submit" ng-click="show = true" value="Rechercher">
     </form>
 </div>
 
-<div ng-view></div>
+<br>
+
+<div ng-view ng-hide="show"></div>
 <div class="clearfix"></div>
+
+<div id="advertsall" ng-show="show">
+    <h3 class="yellowtail">Resultats</h3>
+    <hr>
+    <div ng-repeat="ads in advertsall track by $index">
+        <h4 class="yellowtail">{{ads.user_prenom}} {{ads.user_nom}} propose le voyage suivant : {{ads.ville_dep}} - {{ads.ville_arr}}</h4>
+        <p class="col-md-7 col-md-offset-1">{{ads.commentaire}}</p>
+        <p class="col-md-3 col-md-offset-1">Prix : {{ads.prix}}€<br> Kilos : {{ads.nbr_kilos}}<br> Transport : {{ads.nomMoyen_transport}}</p>
+        <br>
+    </div>
+</div>
 
 <br/>
 <br/>
