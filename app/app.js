@@ -37,6 +37,10 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/annonce', {
             templateUrl: 'pages/annonce.html',
             controller: 'annonceController'
+        })
+        .when('/detail_annonce/:id', {
+            templateUrl: 'pages/detail_annonce.html',
+            controller: 'detailAnnonceController'
         });
     $locationProvider.html5Mode(true);
 });
