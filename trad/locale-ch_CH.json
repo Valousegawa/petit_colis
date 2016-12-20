@@ -102,6 +102,9 @@
   "message.propose" : "提供以下旅行在",
   "message.resultat" : "結果",
   "message.recherche" : "搜索",
+  "message.contact" : "聯繫",
+  "message.envoyer" : "發送",
+
 
   "message.rights" : "保留所有權利。"
 }

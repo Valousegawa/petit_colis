@@ -103,6 +103,8 @@
   "message.propose" : "bietet folgende Reise in",
   "message.resultat" : "Ergebnisse",
   "message.recherche" : "Suchen",
+  "message.contact" : "Kontakt",
+  "message.envoyer" : "Senden",
 
   "message.rights" : "Alle Rechte vorbehalten"
 }

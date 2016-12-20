@@ -102,6 +102,8 @@
   "message.propose" : "Ofrece el siguiente recorrido en",
   "message.resultat" : "Resultados",
   "message.recherche" : "Búsqueda",
+  "message.contact" : "Contacto",
+  "message.envoyer" : "Enviar",
 
   "message.rights" : "Todos los derechos reservados"
 }

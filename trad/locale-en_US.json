@@ -102,6 +102,8 @@
   "message.propose" : "proposes the following travel the",
   "message.resultat" : "Results",
   "message.recherche" : "Search ",
+  "message.contact" : "Contact",
+  "message.envoyer" : "Send",
 
   "message.rights" : "All rights reserved"
 }

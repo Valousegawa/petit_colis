@@ -11,6 +11,7 @@ app.controller('profileController', function ($scope, $rootScope) {
 });
 app.controller('annonceController', annonceController);
 app.controller('detailAnnonceController', detailAnnonceController);
+app.controller('chatController', chatController);
 
 /* CONFIG DECLARATION */
 app.config(function ($translateProvider) {
@@ -46,6 +47,10 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/search_result', {
             templateUrl: 'pages/search_result.html',
             controller: 'HomeController'
+        })
+        .when('/message/:id_annonce/:id_user/:id_voyageur', {
+            templateUrl: 'pages/chat.html',
+            controller: 'chatController'
         });
     $locationProvider.html5Mode(true);
 });
@@ -109,6 +114,24 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
     };
     obj.showDetail = function(id) {
         return $http.post(ressourceBase+ "showDetail", id).then(function(results){
+            return results;
+        });
+    };
+    obj.showMessages = function(infos) {
+        return $http.post(ressourceBase+ "getMessages", infos).then(function(results){
+            return results;
+        });
+    };
+    obj.addMessage = function (infos) {
+        return $http.post(ressourceBase + "addMessage", infos);
+    };
+    obj.getVoyageurClients = function(infos) {
+        return $http.post(ressourceBase+ "getVoyageurClients", infos).then(function(results){
+            return results;
+        });
+    };
+    obj.getVoyageurs = function(infos) {
+        return $http.post(ressourceBase+ "getVoyageurs", infos).then(function(results){
             return results;
         });
     };
@@ -322,8 +345,59 @@ function annonceController($scope, ressources, $rootScope, $location) {
 }
 
 function detailAnnonceController($scope, ressources, $routeParams){
-    console.log($routeParams.id);
     ressources.showDetail($routeParams.id).then(function(data){
         $scope.advertsdetail = data.data;
     });
+}
+
+function chatController($scope, ressources, $routeParams, $rootScope){
+    var id_user = $routeParams.id_user;
+    var id_voyageur = $routeParams.id_voyageur;
+    var id_annonce = $routeParams.id_annonce;
+    
+    $scope.user = id_user;
+
+    if(id_voyageur == $rootScope.connectedUser.idUsers){
+        var infos = [
+            id_annonce,
+            id_user,
+        ];
+
+        ressources.getVoyageurClients(infos).then(function(data){
+            $scope.recipients = data.data;
+        });
+
+    } else {
+        ressources.getVoyageurs(id_user).then(function(data){
+            $scope.recipients = data.data;
+        });
+    }
+
+    var show = [];
+    $scope.showMessage = function(id_dest){
+        show = [
+            id_annonce,
+            id_user,
+            id_dest
+        ];
+        ressources.showMessages(show).then(function(data){
+            $scope.chat_activated = true;
+            $scope.dest_id = id_dest;
+            $scope.messages = data.data;
+        });
+    }
+
+    $scope.newMessage = function(){
+        var infos_message = [
+            id_annonce,
+            id_user,
+            $scope.dest_id,
+            $scope.to_send
+        ];
+        ressources.addMessage(infos_message);
+        ressources.showMessages(show).then(function(data){
+            $scope.messages = data.data;
+        });
+        $scope.to_send = "";
+    }
 }

@@ -109,3 +109,34 @@
     width: 250px;
     margin-right: 20px;
 }
+
+.message {
+    border: solid 1px black;
+    height: auto;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.moi {
+    background-color: lightblue;
+}
+
+.corresp {
+    background-color: lightgreen;
+    margin-right: 500px;
+}
+
+.horodateur {
+    font-style: italic;
+    font-size: 75%;
+    color  lightgrey;
+}
+
+.recipient {
+    background-color: lightgrey;
+    border: solid 1px black;
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 12px;
+}

@@ -103,6 +103,8 @@
   "message.propose" : "propose le voyage suivant en",
   "message.resultat" : "Résultats",
   "message.recherche" : "Rechercher",
+  "message.contact" : "Contacter",
+  "message.envoyer" : "Envoyer",
 
   "message.rights" : "Tous droits réservés"
 }

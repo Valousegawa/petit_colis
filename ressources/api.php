@@ -293,7 +293,7 @@ class API extends REST
         $this->json($result);
     }
 
-    //Révupère tous les types de colis
+    //Récupère tous les types de colis
     private function getType()
     {
         $db = $this->dbConnect();
@@ -306,6 +306,115 @@ class API extends REST
         $this->json($result);
     }
 
+    /*
+     * Gestion des messages entre utilisateurs
+     * Si l'id de l'utilisateur actuel correspond à l'id du voyageur, on affiche tous les messages de l'annonce
+     * Sinon, on affiche uniquement les messages correspondant au couple
+     */
+    private function getMessages()
+    {
+        if($this->get_request_method() !="POST"){
+            $this->response('', 406);
+        }
+        $infos = json_decode(file_get_contents("php://input"),true);
+        $db = $this->dbConnect();
+
+        $id_annonce = $infos[0];
+        $id_user = $infos[1];
+        $id_voyageur = $infos[2];
+
+        $result = array(); 
+        $query = $db->prepare("SELECT * FROM histo_conv WHERE id_annonce=:id_annonce AND ((id_exp=:id_user AND id_dest=:id_voyageur) OR (id_exp=:id_voyageur AND id_dest=:id_user))");
+        $query->bindValue(':id_annonce', $id_annonce);
+        $query->bindValue(':id_user', $id_user);
+        $query->bindValue(':id_voyageur', $id_voyageur);
+        $query->execute();
+
+        while ($r = $query->fetch(PDO::FETCH_ASSOC)){
+            $result[] = $r;
+        }
+        $this->json($result);
+    }
+
+    /*
+     * Gestion d'ajout de message
+     * Simple code d'ajout en base de données
+     */ 
+    private function addMessage(){
+        if($this->get_request_method() !="POST"){
+            $this->response('', 406);
+        }
+        $infos = json_decode(file_get_contents("php://input"),true);
+        $db = $this->dbConnect();
+
+        $id_annonce = $infos[0];
+        $id_exp = $infos[1];
+        $id_dest = $infos[2];
+        $message = $infos[3];
+        $tmstp = date('Y-m-d H:i:s');;
+
+        $query = $db->prepare("INSERT INTO histo_conv(id_annonce, id_exp, id_dest, timestamp, message) VALUES(:id_annonce, :id_exp, :id_dest, :tmstp, :message)");
+        $query->bindValue(':id_annonce', $id_annonce);
+        $query->bindValue(':id_exp', $id_exp);
+        $query->bindValue(':id_dest', $id_dest);
+        $query->bindValue(':message', $message);
+        $query->bindValue(':tmstp', $tmstp);
+        $query->execute();
+    }
+
+    //Affiche les clients ayant voulus contacter le voyageur pour une annonce donnée
+    private function getVoyageurClients(){
+        if($this->get_request_method() !="POST"){
+            $this->response('', 406);
+        }
+        $infos = json_decode(file_get_contents("php://input"),true);
+        $db = $this->dbConnect();
+
+        $id_annonce = $infos[0];
+        $id_voyageur = $infos[1];
+
+        $query = $db->prepare("SELECT DISTINCT id_exp FROM histo_conv WHERE id_annonce = :id_annonce AND id_dest = :id_voyageur");
+        $query->bindValue(':id_annonce', $id_annonce);
+        $query->bindValue(':id_voyageur', $id_voyageur);
+        $query->execute();
+
+        $clients_id = $query->fetchAll();
+
+        $client = array();
+        foreach($clients_id as $client_id){
+            $query = $db->prepare("SELECT * FROM users WHERE idUsers = :client_id");
+            $query->bindValue(':client_id', $client_id[0]);
+            $query->execute();
+            $r = $query->fetch(PDO::FETCH_ASSOC);
+            $client[] = $r;
+        }
+        $this->json($client);
+    }
+
+    //Affiche les voyageurs (annonces) auxquels le client a eu affaire
+    private function getVoyageurs(){
+        if($this->get_request_method() !="POST"){
+            $this->response('', 406);
+        }
+        $infos = json_decode(file_get_contents("php://input"),true);
+        $db = $this->dbConnect();
+
+        $query = $db->prepare("SELECT DISTINCT id_dest FROM histo_conv WHERE id_exp = :id_exp");
+        $query->bindValue(':id_exp', $infos);
+        $query->execute();
+
+        $clients_id = $query->fetchAll();
+
+        $client = array();
+        foreach($clients_id as $client_id){
+            $query = $db->prepare("SELECT * FROM users WHERE idUsers = :client_id");
+            $query->bindValue(':client_id', $client_id[0]);
+            $query->execute();
+            $r = $query->fetch(PDO::FETCH_ASSOC);
+            $client[] = $r;
+        }
+        $this->json($client);
+    }
 
     /*
      *	Encode array into JSON
