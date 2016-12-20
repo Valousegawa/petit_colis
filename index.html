@@ -52,37 +52,13 @@
         <input class="form-control search" type="text" ng-model="ville_d" name="ville_d" placeHolder="{{'annonce.ville_depart' | translate}}">
         <input class="form-control search" type="text" ng-model="ville_a" name="ville_a" placeHolder="{{'annonce.ville_arrivee' | translate}}">
         <input class="form-control search" type="date" ng-model="date_d" name="date_dep">
-        <input type="submit" ng-click="show = true" value="{{'message.recherche' | translate}}">
+        <input type="submit" ng-click="go('search_result')" value="{{'message.recherche' | translate}}">
     </form>
-</div>
-<div>
-<button ng-click="go('detail_annonce/17')">Go</button>
 </div>
 
 <br><br>
 
-<div ng-view ng-hide="show"></div>
-<div id="advertsall" ng-show="show">
-    <h2 class="yellowtail center">{{"message.resultat" | translate}}</h2>
-    <hr>
-    <div ng-repeat="ads in advertsall track by $index" class="col-md-offset-1 col-md-9">
-        <div class="col-md-3" >
-            <h4 class="yellowtail"><img class="mini-img-circle" ng-src="{{ads.pic}}"/>  {{ads.user_prenom}} {{ads.user_nom}}</h4>  
-        </div>
-        <div class="col-md-6">
-            Voyage proposé le {{ads.date_debut | date : 'd/M/yyyy'}}<br/>
-            {{ads.nomDelai | translate}}/{{ads.commentaire}}<br/>
-            <img src="img/start.png" width="16" height="16"/> {{ads.ville_dep}}<br/>
-            <img src="img/finish.png" width="16" height="16"/> {{ads.ville_arr}}<br/>
-            {{"annonce.transport" | translate}} : {{ads.nomMoyen_transport | translate}}
-        </div>
-        <div class="col-md_2>">
-        {{"annonce.prix" | translate}} : {{ads.prix}}€<br/>
-        {{"annonce.kilo" | translate}} : {{ads.nbr_kilos}}<br/> 
-        </div>
-        <hr>
-    </div
-</div>
+<div ng-view></div>
 <div class="clearfix"></div>
 
 

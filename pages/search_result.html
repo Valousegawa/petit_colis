@@ -1,0 +1,23 @@
+<div id="advertsall">
+    <h2 class="yellowtail center">{{"message.resultat" | translate}}</h2>
+    <hr class="major_hr">
+    <div ng-repeat="ads in advertsall track by $index" class="col-md-offset-1 col-md-9">
+        <div class="col-md-3" >
+            <h4 class="yellowtail"><img class="mini-img-circle" ng-src="{{ads.pic}}"/>  {{ads.user_prenom}} {{ads.user_nom}}</h4>  
+        </div>
+        <div class="col-md-6">
+            Voyage proposé le {{ads.date_debut | date : 'd/M/yyyy'}}<br/>
+            {{ads.nomDelai | translate}}/{{ads.commentaire}}<br/>
+            <img src="img/start.png" width="16" height="16"/> {{ads.ville_dep}}<br/>
+            <img src="img/finish.png" width="16" height="16"/> {{ads.ville_arr}}<br/>
+            {{"annonce.transport" | translate}} : {{ads.nomMoyen_transport | translate}}
+        </div>
+        <div class="col-md_2>">
+        {{"annonce.prix" | translate}} : {{ads.prix}}€<br/>
+        {{"annonce.kilo" | translate}} : {{ads.nbr_kilos}}<br/> 
+        <a ng-href="detail_annonce/{{ads.idAnnonce}}" ng-show="connected"><button type="button"></button>{{"annonce.detail" | translate}}</a>
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+    </div>
+</div>

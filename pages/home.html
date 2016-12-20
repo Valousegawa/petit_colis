@@ -16,6 +16,7 @@
             <div class="col-md-2>">
             {{"annonce.prix" | translate}} : {{ads.prix}}€<br/>
             {{"annonce.kilo" | translate}} : {{ads.nbr_kilos}}<br/> 
+            <a ng-href="detail_annonce/{{ads.idAnnonce}}" ng-show="connected"><button type="button">{{"annonce.detail" | translate}}</button></a>
             </div>
             <div class="clearfix"></div>
             <hr/>

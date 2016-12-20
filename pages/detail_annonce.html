@@ -1,16 +1,18 @@
-<div ng-app="petit_colis">
 <div ng-controller="detailAnnonceController">
-	<div ng-repeat="add in advertsdetail track by $index">
-
+	<div ng-repeat="add in advertsdetail track by $index" class="center">
 		<p>
-			NOM DU VOYAGEUR : {{add.user_nom}} {{add.user_prenom}}<br>
-			ALLER - RETOUR : {{add.a_r}}<br>
-			DATE DEBUT : {{add.date_debut}} 
-			DATE FIN : {{add.date_fin}}<br>
-			COMMENTAIRE : {{add.commentaire}}<br>
-			PRIX : {{add.prix}} KILOS : {{add.nbr_kilos}}<br>
-			MOYEN DE TRANSPORT : {{add.nomMoyen_transport}}
+			<img class="img-circle center" ng-src="{{add.pic}}"/><br/><br/>
+			<h2 class="yellowtail">{{add.user_nom}} {{add.user_prenom}}</h2><br>
+			{{"message.propose" | translate}}<br/>
+			<span ng-show="add.a_r == null">{{"annonce.aller" | translate}}</span>
+			<span ng-show="add.a_r">{{"annonce.aller_retour" | translate}}</span><br/><br>
+			<span ng-show="add.a_r != null">{{"du" | translate}} {{add.date_debut}} {{"au" | translate}} {{add.date_fin}}<br></span>
+			<span ng-show="add.a_r == null">{{"le" | translate}} {{add.date_debut}}<br></span>
+			{{"annonce.detail" | translate}} : {{add.commentaire}}<br>
+			{{"annonce.prix" | translate}} : {{add.prix}}<br>
+			{{"annonce.kilo" | translate}} : {{add.nbr_kilos}}<br>
+			{{"annonce.transport" | translate}} : {{add.nomMoyen_transport | translate}}
 		</p>
+		<a ng-href="message/{{add.idAnnonce}}/{{connectedUser.idUsers}}/{{add.id_voyageur}}" ng-show="connected"><button type="button">{{"message.contact" | translate}}</button></a>
 	</div>
-</div>
 </div>

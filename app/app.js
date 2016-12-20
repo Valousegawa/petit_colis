@@ -42,6 +42,10 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/detail_annonce/:id', {
             templateUrl: 'pages/detail_annonce.html',
             controller: 'detailAnnonceController'
+        })
+        .when('/search_result', {
+            templateUrl: 'pages/search_result.html',
+            controller: 'HomeController'
         });
     $locationProvider.html5Mode(true);
 });
