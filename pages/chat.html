@@ -1,5 +1,5 @@
 <div ng-controller="chatController">
-    <div id="chatbox" class="col-md-offset-1 col-md-2">
+    <div id="chatbox" class="col-md-2">
         <div ng-repeat="recipient in recipients">
             <div ng-click="showMessage(recipient.idUsers)" class="recipient">
                 {{recipient.user_nom}} {{recipient.user_prenom}}
@@ -7,7 +7,7 @@
             <br>
         </div>
     </div>
-    <div id="chatbox" ng-show="chat_activated" class="col-md-offset-2 col-md-6 center">
+    <div id="chatbox" ng-show="chat_activated" class="col-md-offset-4 col-md-6 center">
     	<div ng-repeat="message in messages track by $index" class="col-md-5 message clearfix" 
             ng-class="{'col-md-offset-6 moi': message.id_exp == connectedUser.idUsers, 'corresp': message.id_exp != connectedUser.idUsers}">
     		{{message.message}}<br>

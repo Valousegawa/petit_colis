@@ -416,6 +416,21 @@ class API extends REST
         $this->json($client);
     }
 
+    //Récupère le nombre de réponses pour une annonce
+    private function getAnnonceAnswers(){
+        if($this->get_request_method() !="POST"){
+            $this->response('', 406);
+        }
+        $infos = json_decode(file_get_contents("php://input"),true);
+        $db = $this->dbConnect();
+
+        $query = $db->prepare("SELECT COUNT(idHisto_conv) AS cpt FROM histo_conv WHERE id_annonce = :id");
+        $query->bindValue(':id', $infos);
+        $query->execute();
+
+        $this->json($query->fetch(PDO::FETCH_ASSOC));
+    }
+
     /*
      *	Encode array into JSON
     */

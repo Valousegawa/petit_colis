@@ -135,6 +135,11 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
             return results;
         });
     };
+    obj.getAnnonceAnswers = function(infos) {
+        return $http.post(ressourceBase+ "getAnnonceAnswers", infos).then(function(results){
+            return results;
+        });
+    };
     return obj;
 }]);
 
@@ -344,10 +349,22 @@ function annonceController($scope, ressources, $rootScope, $location) {
 
 }
 
-function detailAnnonceController($scope, ressources, $routeParams){
+function detailAnnonceController($scope, ressources, $routeParams, $rootScope){
     ressources.showDetail($routeParams.id).then(function(data){
         $scope.advertsdetail = data.data;
+        if(data.data[0].id_voyageur == $rootScope.connectedUser.idUsers){
+            ressources.getAnnonceAnswers($routeParams.id).then(function(data){
+                if(data.data.cpt == 0){
+                    $scope.nope = true;
+                } else {
+                    $scope.nope = false;
+                }
+            });
+        } else {
+            $scope.nope = false;
+        }
     });
+
 }
 
 function chatController($scope, ressources, $routeParams, $rootScope){

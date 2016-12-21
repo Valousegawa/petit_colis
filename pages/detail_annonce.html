@@ -13,6 +13,6 @@
 			{{"annonce.kilo" | translate}} : {{add.nbr_kilos}}<br>
 			{{"annonce.transport" | translate}} : {{add.nomMoyen_transport | translate}}
 		</p>
-		<a ng-href="message/{{add.idAnnonce}}/{{connectedUser.idUsers}}/{{add.id_voyageur}}" ng-show="connected"><button type="button">{{"message.contact" | translate}}</button></a>
+		<a ng-href="message/{{add.idAnnonce}}/{{connectedUser.idUsers}}/{{add.id_voyageur}}" ng-show="connected"><button ng-class="{'hidden' : nope}" type="button">{{"message.contact" | translate}}</button></a>
 	</div>
 </div>
