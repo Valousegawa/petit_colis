@@ -140,6 +140,11 @@ app.factory("ressources", ['$http', function ($http, $rootScope) {
             return results;
         });
     };
+    obj.getVoyageurInfos = function(infos) {
+        return $http.post(ressourceBase+ "getVoyageurInfos", infos).then(function(results){
+            return results;
+        });
+    };
     return obj;
 }]);
 
@@ -383,11 +388,19 @@ function chatController($scope, ressources, $routeParams, $rootScope){
         ressources.getVoyageurClients(infos).then(function(data){
             $scope.recipients = data.data;
         });
-
     } else {
-        ressources.getVoyageurs(id_user).then(function(data){
-            $scope.recipients = data.data;
-        });
+        ressources.getAnnonceAnswers(id_voyageur).then(function(data){
+                if(data.data.cpt == 0){
+                    ressources.getVoyageurInfos(id_voyageur).then(function(data){
+                        console.log(data);
+                        $scope.recipients = data.data;
+                    });
+                } else {
+                    ressources.getVoyageurs(id_user).then(function(data){
+                        $scope.recipients = data.data;
+                    });
+                }
+            });
     }
 
     var show = [];

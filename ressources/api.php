@@ -423,6 +423,21 @@ class API extends REST
         $this->json($client);
     }
 
+    //Récupère les informations du voyageur
+    private function getVoyageurInfos(){
+        if($this->get_request_method() !="POST"){
+            $this->response('', 406);
+        }
+        $infos = json_decode(file_get_contents("php://input"),true);
+        $db = $this->dbConnect();
+
+        $query = $db->prepare("SELECT * FROM users WHERE idUsers = :client_id");
+        $query->bindValue(':client_id', $infos);
+        $query->execute();
+        $r = $query->fetchAll(PDO::FETCH_ASSOC);
+        $this->json($r);
+    }
+
     //Récupère le nombre de réponses pour une annonce
     private function getAnnonceAnswers(){
         if($this->get_request_method() !="POST"){
