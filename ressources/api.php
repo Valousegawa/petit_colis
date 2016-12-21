@@ -235,14 +235,21 @@ class API extends REST
             }
             $advert = json_decode(file_get_contents("php://input"),true);
             $db = $this->dbConnect();
-            $d_d = new DateTime($advert[2], new DateTimeZone('Europe/Paris'));
-            $d_d->add(new DateInterval('PT1H'));
-
-            $query = $db->prepare("SELECT * FROM annonce, users, delai, moyens_transport, types_colis WHERE idUsers=id_voyageur AND idDelai=id_delai AND id_moyen_transport=idMoyens_transport AND id_type_colis=idTypes_colis AND ville_dep=:ville_dep AND ville_arr=:ville_arr AND date_debut=:date_debut");
-            $query->bindValue(':ville_dep', $advert[0]);
-            $query->bindValue(':ville_arr', $advert[1]);
-            $query->bindValue(':date_debut', $d_d->format("Y-m-d"));
-            $query->execute();
+            if($advert[2] == NULL){
+                $query = $db->prepare("SELECT * FROM annonce, users, delai, moyens_transport, types_colis WHERE idUsers=id_voyageur AND idDelai=id_delai AND id_moyen_transport=idMoyens_transport AND id_type_colis=idTypes_colis AND ville_dep=:ville_dep AND ville_arr=:ville_arr");
+                $query->bindValue(':ville_dep', $advert[0]);
+                $query->bindValue(':ville_arr', $advert[1]);
+                $query->execute();
+            }
+            else{
+                $d_d = new DateTime($advert[2], new DateTimeZone('Europe/Paris'));
+                $d_d->add(new DateInterval('PT1H'));
+                $query = $db->prepare("SELECT * FROM annonce, users, delai, moyens_transport, types_colis WHERE idUsers=id_voyageur AND idDelai=id_delai AND id_moyen_transport=idMoyens_transport AND id_type_colis=idTypes_colis AND ville_dep=:ville_dep AND ville_arr=:ville_arr AND date_debut=:date_debut");
+                $query->bindValue(':ville_dep', $advert[0]);
+                $query->bindValue(':ville_arr', $advert[1]);
+                $query->bindValue(':date_debut', $d_d->format("Y-m-d"));
+                $query->execute();
+            }           
             $result = array(); 
             while ($r = $query->fetch(PDO::FETCH_ASSOC)){
                 $result[] = $r;
