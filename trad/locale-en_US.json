@@ -98,6 +98,7 @@
   "annonce.regle" : "see rules",
   "annonce.continue" : "Continue",
   "annonce.continue_publish" : "Continue and publish",
+  "annonce.date" : "Date",
 
   "message.propose" : "proposes the following travel the",
   "message.resultat" : "Results",

@@ -1,18 +1,62 @@
 <div ng-controller="detailAnnonceController">
 	<div ng-repeat="add in advertsdetail track by $index" class="center">
-		<p>
-			<img class="img-circle center" ng-src="{{add.pic}}"/><br/><br/>
-			<h2 class="yellowtail">{{add.user_nom}} {{add.user_prenom}}</h2><br>
-			{{"message.propose" | translate}}<br/>
-			<span ng-show="add.a_r == null">{{"annonce.aller" | translate}}</span>
-			<span ng-show="add.a_r">{{"annonce.aller_retour" | translate}}</span><br/><br>
-			<span ng-show="add.a_r != null">{{"du" | translate}} {{add.date_debut}} {{"au" | translate}} {{add.date_fin}}<br></span>
-			<span ng-show="add.a_r == null">{{"le" | translate}} {{add.date_debut}}<br></span>
-			{{"annonce.detail" | translate}} : {{add.commentaire}}<br>
-			{{"annonce.prix" | translate}} : {{add.prix}}<br>
-			{{"annonce.kilo" | translate}} : {{add.nbr_kilos}}<br>
-			{{"annonce.transport" | translate}} : {{add.nomMoyen_transport | translate}}
-		</p>
+		<img class="img-circle center" ng-src="{{add.pic}}"/><br/><br/>
+		<h2 class="yellowtail">{{add.user_nom}} {{add.user_prenom}}</h2>
+		{{"message.propose" | translate}}<br/>
+		<br>
+		<table class="table table-striped table-bordered detail_annonce center">
+			<tr>
+				<td>
+					{{"annonce.aller_retour" | translate}}
+				</td>
+				<td>
+					<span ng-show="add.a_r == null">{{"annonce.aller" | translate}}</span>
+					<span ng-show="add.a_r != null">{{"annonce.aller_retour" | translate}}</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{{"annonce.date" | translate}}
+				</td>
+				<td>
+					<span ng-show="add.a_r != null">{{"du" | translate}} {{add.date_debut}} {{"au" | translate}} {{add.date_fin}}</span>
+					<span ng-show="add.a_r == null">{{"le" | translate}} {{add.date_debut}}</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{{"annonce.detail" | translate}}
+				</td>
+				<td>
+					{{add.commentaire}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{{"annonce.prix" | translate}}
+				</td>
+				<td>
+					{{add.prix}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{{"annonce.kilo" | translate}}
+				</td>
+				<td>
+					{{add.nbr_kilos}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{{"annonce.transport" | translate}}
+				</td>
+				<td>
+					{{add.nomMoyen_transport | translate}}
+				</td>
+			</tr>
+		</table>
+	<br>
 		<a ng-href="message/{{add.idAnnonce}}/{{connectedUser.idUsers}}/{{add.id_voyageur}}" ng-show="connected"><button ng-class="{'hidden' : nope}" type="button">{{"message.contact" | translate}}</button></a>
 	</div>
 </div>
